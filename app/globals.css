@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-paper text-ink;
+  }
+  body {
+    @apply font-sans antialiased;
+  }
+  h1, h2, h3 {
+    @apply font-display;
+  }
+  :focus-visible {
+    outline: 2px solid theme("colors.pitch.DEFAULT");
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-line bg-surface p-6;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-pitch px-4 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-pitch-dark;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-lg border border-line px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:border-pitch/50 hover:text-pitch;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full bg-pitch-dim px-2.5 py-1 text-xs font-medium uppercase tracking-wide text-pitch;
+  }
+  .select-field {
+    @apply rounded-lg border border-line bg-surface2 px-3 py-2 text-sm text-ink outline-none transition-colors;
+  }
+  .select-field:hover {
+    @apply border-pitch/40;
+  }
+  .select-field:focus {
+    @apply border-pitch;
+  }
+}
