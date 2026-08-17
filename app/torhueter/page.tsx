@@ -10,19 +10,35 @@ const modules = [
     status: "Verfügbar",
   },
   {
-    href: null,
+    href: "/torhueter/technik",
     emoji: "🥅",
     title: "Technik-Grundlagen",
     description:
-      "Grundstellung, Fangen, Fallen, Hechten — Schritt für Schritt erklärt.",
-    status: "In Planung",
+      "Grundstellung, Fangen, Fallen, Hechten, Spieleröffnung — Schritt für Schritt erklärt.",
+    status: "Verfügbar",
   },
   {
-    href: null,
+    href: "/torhueter/taktik",
+    emoji: "📐",
+    title: "Taktik-Grundlagen",
+    description:
+      "Stellungsspiel, Ballgewinnspiel, Spielaufbau und Standardsituationen.",
+    status: "Verfügbar",
+  },
+  {
+    href: "/torhueter/athletik",
+    emoji: "💪",
+    title: "Athletik & Ernährung",
+    description:
+      "Beweglichkeit, Kraft, Schnelligkeit — plus Ernährung und Regeneration rund ums Spiel.",
+    status: "Verfügbar",
+  },
+  {
+    href: "/torhueter/mental",
     emoji: "🧠",
     title: "Mentale Stärke",
     description: "Umgang mit Fehlern, Drucksituationen und Rückschlägen.",
-    status: "In Planung",
+    status: "Verfügbar",
   },
 ];
 

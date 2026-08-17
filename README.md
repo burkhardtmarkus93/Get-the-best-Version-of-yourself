@@ -19,23 +19,31 @@ künftige Module vorbereitet, aber noch nicht aktiv genutzt.
 
 ## Bereiche
 
-- **`/torhueter`** — Lernmodule für Torhüter selbst. Aktuell: der
-  Fußballwörter-Vokabeltrainer (449 Begriffe, 4 Sprachen, Leitner-System
-  + Quiz). Weitere Module (Technik, Mentale Stärke) sind vorgemerkt.
+- **`/torhueter`** — Fünf Lernmodule für Torhüter selbst: Fußballwörter
+  Trainer (449 Begriffe, 4 Sprachen, Leitner-System + Quiz),
+  Technik-Grundlagen, Taktik-Grundlagen, Athletik & Ernährung, Mentale
+  Stärke.
 - **`/eltern`** — Orientierung für Eltern: Werdegang vom Bambini zum
-  Torhüter im Herrenbereich, Themen wie Ausrüstung und Alltag.
+  Torhüter im Herrenbereich, sechs Themen von Ausrüstung bis
+  Spieltag-Begleitung.
 - **`/trainer`** — Für Trainer:innen mit Interesse am Torwarttraining:
-  Lizenzwege und Themenbereiche.
+  Lizenzwege, Themenbereiche, Coaching-Prinzipien und
+  Trainingssteuerung.
 
 ## Struktur
 
 ```
 app/                      Next.js App Router Seiten
   torhueter/vokabeln/      Vokabeltrainer-Modul
+  torhueter/technik/       Technik-Grundlagen-Modul
+  torhueter/taktik/        Taktik-Grundlagen-Modul
+  torhueter/athletik/      Athletik & Ernährung-Modul
+  torhueter/mental/        Mentale-Stärke-Modul
   eltern/                  Elternbereich
   trainer/                 Trainerbereich
 components/
   vocab/VocabTrainer.tsx   Karteikarten/Quiz/Statistik-Logik
+  content/                 Wiederverwendbare Bausteine für Modul-Inhalte
   affiliate/               Werbe-/Affiliate-Komponenten
   layout/                  Header/Footer
 lib/
