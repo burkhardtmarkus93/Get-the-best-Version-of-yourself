@@ -1,47 +1,55 @@
-# ⚽ Fußballwörter Trainer
+# 🧤 Torwart Akademie
 
-Ein Lern-Tool für mehrsprachige Fußball-Vokabeln (Deutsch, Englisch, Portugiesisch,
-Spanisch), gebaut aus einer Sammlung von 449 Fachbegriffen aus 13 Kategorien
-(Spielfeld, Spieler, Technik, Taktik, Torwart, u.v.m.).
+Lernplattform für Torhüter, ihre Eltern und Trainer:innen mit Interesse
+am Torwarttraining. Tech-Stack und Projektstruktur an
+[`talent-catcher`](https://github.com/burkhardtmarkus93/talent-catcher)
+angelehnt.
 
-Läuft komplett im Browser, ohne Build-Schritt, ohne Server-Backend. Der
-Lernfortschritt wird lokal im `localStorage` des Browsers gespeichert.
-
-## Öffnen
-
-Einfach `index.html` im Browser öffnen, oder lokal servieren:
+## Lokal starten
 
 ```bash
-python3 -m http.server 8000
-# dann http://localhost:8000 öffnen
+npm install
+cp .env.local.example .env.local
+npm run dev
 ```
 
-## Funktionen
+Für den Vokabeltrainer reicht das bereits aus (kein Supabase-Setup nötig,
+Fortschritt liegt lokal im Browser). Supabase ist als Grundgerüst für
+künftige Module vorbereitet, aber noch nicht aktiv genutzt.
 
-- **Karteikarten** – Karteikarten-Modus mit Leitner-System (5 Boxen).
-  Richtig beantwortete Karten wandern in höhere Boxen und werden seltener
-  abgefragt, falsch beantwortete fallen zurück auf Box 1.
-- **Quiz** – Multiple-Choice-Runden mit 4 Antwortoptionen, Distraktoren
-  bevorzugt aus derselben Kategorie. Ergebnisse fließen ebenfalls ins
-  Leitner-System ein.
-- **Statistik** – Fortschritt je Box (für die aktuell gewählte
-  Sprachrichtung) und Fortschritt je Kategorie.
-- **Torwarttrainer** – Referenzseite mit dem 19-Jahre-Werdegang vom
-  Bambini-Kicker zum Bundesliga-Torspieler und dem vollständigen
-  Themenplan für Torspieler-Trainer (Lizenzen, Philosophie, Trainingstheorie
-  und -praxis, Analysen) von Markus Burkhardt (Goalplayer Coach).
+## Bereiche
 
-Sprachrichtung (von/nach) und Kategorien lassen sich oben in der Filterleiste
-frei kombinieren; die Auswahl gilt für Karteikarten, Quiz und Statistik
-gleichermaßen und wird ebenfalls lokal gespeichert.
+- **`/torhueter`** — Lernmodule für Torhüter selbst. Aktuell: der
+  Fußballwörter-Vokabeltrainer (449 Begriffe, 4 Sprachen, Leitner-System
+  + Quiz). Weitere Module (Technik, Mentale Stärke) sind vorgemerkt.
+- **`/eltern`** — Orientierung für Eltern: Werdegang vom Bambini zum
+  Torhüter im Herrenbereich, Themen wie Ausrüstung und Alltag.
+- **`/trainer`** — Für Trainer:innen mit Interesse am Torwarttraining:
+  Lizenzwege und Themenbereiche.
 
 ## Struktur
 
 ```
-index.html               Hauptseite mit allen vier Tabs
-assets/style.css          Styling
-assets/app.js             App-Logik (Karteikarten, Quiz, Statistik, Leitner-System)
-assets/reference-data.js  Werdegang-Timeline & Themenplan-Daten
-data/vocab-manifest.json  Liste der Vokabel-Dateien je Kategorie
-data/vocab/*.json         Vokabeldaten je Kategorie (per fetch geladen)
+app/                      Next.js App Router Seiten
+  torhueter/vokabeln/      Vokabeltrainer-Modul
+  eltern/                  Elternbereich
+  trainer/                 Trainerbereich
+components/
+  vocab/VocabTrainer.tsx   Karteikarten/Quiz/Statistik-Logik
+  affiliate/               Werbe-/Affiliate-Komponenten
+  layout/                  Header/Footer
+lib/
+  vocab/                   Vokabeldaten + Loader
+  career/                  Werdegang- und Trainer-Themendaten
+  affiliate/config.ts      Zentrale Stelle für Affiliate-Links
+  supabase/                Client/Server-Setup (noch ungenutzt)
 ```
+
+## Monetarisierung
+
+- **Aktiv:** Affiliate-Link zu einem Englischkurs (`AFFILIATE_ENGLISH_COURSE_URL`
+  in `.env.local`), klar als Werbung gekennzeichnet.
+- **Geplant (Phase 2, siehe `CLAUDE.md`):** Torwarthandschuh-Marken mit
+  Umsatzbeteiligung — bewusst noch nicht umgesetzt, da die Zielgruppe
+  Minderjährige umfasst und das besondere Sorgfalt bei Auswahl,
+  Kennzeichnung und Platzierung braucht.
