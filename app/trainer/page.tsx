@@ -1,4 +1,7 @@
+import Link from "next/link";
 import { coachingLicenses, coachingTopics } from "@/lib/career/coaching-topics";
+import { TopicSection } from "@/components/content/TopicSection";
+import { CueCard } from "@/components/content/CueCard";
 
 export const metadata = { title: "Für Trainer · Torwart Akademie" };
 
@@ -34,10 +37,59 @@ export default function TrainerPage() {
         ))}
       </div>
 
-      <div className="card mt-10 opacity-70">
+      <TopicSection
+        title="Coaching-Prinzipien"
+        intro="Was beim Korrigieren zählt, ist selten die fachliche Tiefe — sondern wie es beim Torhüter ankommt."
+      >
+        <CueCard
+          title="Richtiges Coaching"
+          cues={[
+            "Fehler erkennen, Übung sofort unterbrechen",
+            "Fragen, was falsch war — zeigt, ob der Torhüter es selbst bemerkt hat",
+            "Übung richtig vormachen und wiederholen lassen",
+          ]}
+        />
+        <CueCard
+          title="Feedback-Verhältnis"
+          cues={[
+            "Lob-zu-Kritik-Verhältnis von etwa 8:1 anstreben",
+            "Grobe Fehler sofort ansprechen, aber nicht zu viele auf einmal",
+            "'Natürlich nicht' statt hartem 'Nein' — Ton macht den Unterschied",
+          ]}
+        />
+      </TopicSection>
+
+      <TopicSection title="Trainingssteuerung">
+        <CueCard
+          title="Trainingsaufbau (WASIC)"
+          cues={[
+            "Torhütern erklären, welche Übung gemacht wird und wofür",
+            "Verständnisfragen zulassen, bevor es losgeht",
+            "Nach der Erklärung motivieren statt nur anweisen",
+          ]}
+        />
+        <CueCard
+          title="Intensitätssteuerung"
+          body="Grobe Orientierung für den Belastungsverlauf einer Einheit (in %)."
+          cues={["60 – 80 – 100 – 100 – 80 – 60"]}
+        />
+      </TopicSection>
+
+      <div className="card mt-10 flex flex-wrap items-center justify-between gap-4">
+        <p className="text-sm text-ink">
+          Die Torhüter-Lernmodule (Technik, Taktik, Athletik, Mental)
+          eignen sich auch als schnelle fachliche Auffrischung für
+          Trainer:innen.
+        </p>
+        <Link href="/torhueter" className="btn-ghost shrink-0">
+          Module ansehen →
+        </Link>
+      </div>
+
+      <div className="card mt-4 opacity-70">
         <p className="text-sm text-muted">
-          Trainingsformen, Arbeitsblätter und Video-Beispiele sind als
-          Module in Planung.
+          Konkrete Trainingsformen, Arbeitsblätter und Video-Beispiele
+          sind als nächster Ausbauschritt geplant.
         </p>
       </div>
     </div>

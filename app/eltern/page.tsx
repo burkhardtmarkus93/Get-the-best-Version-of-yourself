@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { careerTimeline } from "@/lib/career/timeline";
 
 export const metadata = { title: "Für Eltern · Torwart Akademie" };
@@ -17,6 +18,21 @@ const topics = [
     title: "Umgang mit Fehlern",
     body:
       "Ein Gegentor gehört zum Torwartspiel dazu. Zuhause über das Spiel statt nur über Fehler zu sprechen, hilft beim Dranbleiben.",
+  },
+  {
+    title: "Kommunikation mit dem Trainer",
+    body:
+      "Fragen zur Spielzeit oder Position gehören dem Kind, nicht den Eltern. Direkter Kontakt zum Trainer ist sinnvoll bei organisatorischen Themen, nicht bei jeder einzelnen Trainingsentscheidung.",
+  },
+  {
+    title: "Spieltage begleiten",
+    body:
+      "Ankommen, unaufgeregt anfeuern, nach dem Spiel nicht sofort analysieren. Die Autofahrt nach Hause muss kein Nachbesprechungstermin sein.",
+  },
+  {
+    title: "Wenn's mal nicht läuft",
+    body:
+      "Formtiefs und Nichtnominierungen gehören zur Entwicklung dazu. Der Vergleich mit Mannschaftskollegen hilft selten — der Vergleich mit dem eigenen letzten Stand schon.",
   },
 ];
 
@@ -61,6 +77,16 @@ export default function ElternPage() {
             <p className="mt-2 text-sm text-muted">{t.body}</p>
           </div>
         ))}
+      </div>
+
+      <div className="card mt-10 flex flex-wrap items-center justify-between gap-4">
+        <p className="text-sm text-ink">
+          Neugierig, was euer Kind gerade übt? Die Torhüter-Lernmodule
+          sind frei zugänglich.
+        </p>
+        <Link href="/torhueter" className="btn-ghost shrink-0">
+          Module ansehen →
+        </Link>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ const audiences = [
     emoji: "🧤",
     title: "Für Torhüter",
     description:
-      "Lernmodule rund ums Torwartspiel — von Fachvokabular bis (bald) Technik und Taktik.",
+      "Fachvokabular, Technik, Taktik, Athletik & Ernährung, Mentale Stärke — fünf Module zum eigenen Tempo.",
     cta: "Module ansehen",
   },
   {
