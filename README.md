@@ -48,13 +48,23 @@ components/
   vocab/VocabTrainer.tsx   Karteikarten/Quiz/Statistik-Logik
   content/                 Wiederverwendbare Bausteine für Modul-Inhalte
   affiliate/               Werbe-/Affiliate-Komponenten
+  auth/                    Login/Signup-Formular
+  tour/ProductTour.tsx     Erste-Schritte-Tour (Spotlight, kein Login nötig)
   layout/                  Header/Footer
 lib/
   vocab/                   Vokabeldaten + Loader
   career/                  Werdegang- und Trainer-Themendaten
   affiliate/config.ts      Zentrale Stelle für Affiliate-Links
-  supabase/                Client/Server-Setup (noch ungenutzt)
+  tour/steps.ts            Schritte der Erste-Schritte-Tour
+  supabase/                Client/Server-Setup für Accounts (`/konto`)
 ```
+
+## Erste-Schritte-Tour
+
+Startet automatisch beim ersten Besuch (Spotlight auf echte UI-Elemente,
+`lib/tour/steps.ts`), merkt sich „gesehen" nur lokal im Browser — kein
+Login nötig. Jederzeit über den Link „Erste-Schritte-Tour" im Footer
+erneut startbar.
 
 ## Monetarisierung
 
