@@ -96,6 +96,7 @@ export function VocabTrainer({ cards }: { cards: VocabCard[] }) {
   useEffect(() => {
     if (!hydrated || !user || syncedUserId === user.id) return;
     const supabase = createClient();
+    if (!supabase) return;
 
     (async () => {
       const { data, error } = await supabase
@@ -156,10 +157,10 @@ export function VocabTrainer({ cards }: { cards: VocabCard[] }) {
     saveProgress({ ...progress, [key]: entry });
 
     if (user) {
+      const userId = user.id;
       const supabase = createClient();
-      supabase
-        .from("vocab_progress")
-        .upsert({ user_id: user.id, card_key: key, ...entry })
+      supabase?.from("vocab_progress")
+        .upsert({ user_id: userId, card_key: key, ...entry })
         .then(({ error }) => {
           if (error) console.error("vocab_progress sync failed", error);
         });

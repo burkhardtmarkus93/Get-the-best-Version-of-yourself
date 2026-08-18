@@ -23,6 +23,7 @@ export default function KontoPage() {
 
   async function handleLogout() {
     const supabase = createClient();
+    if (!supabase) return;
     await supabase.auth.signOut();
   }
 
