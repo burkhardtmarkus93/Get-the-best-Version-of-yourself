@@ -15,7 +15,11 @@ export default function VokabelnPage() {
       </h1>
       <p className="mt-2 text-sm text-muted">
         {cards.length} Fachbegriffe aus 13 Kategorien. Fortschritt wird
-        lokal in diesem Browser gespeichert.
+        lokal in diesem Browser gespeichert — mit{" "}
+        <a href="/konto" className="underline hover:text-ink">
+          Konto
+        </a>{" "}
+        geräteübergreifend.
       </p>
 
       <div className="mt-8">

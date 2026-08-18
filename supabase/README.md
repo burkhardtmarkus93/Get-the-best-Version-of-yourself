@@ -1,8 +1,10 @@
 # Supabase-Setup
 
-Noch ungenutzt. Der Vokabeltrainer speichert Fortschritt lokal im
-Browser und braucht kein Backend. Sobald ein Modul Nutzerkonten oder
-geräteübergreifenden Fortschritt braucht:
+Wird aktiv genutzt für Accounts (`/konto`) und geräteübergreifenden
+Vokabeltrainer-Fortschritt (`vocab_progress`, siehe `migrations/`). Ohne
+gesetzte Env-Vars (`.env.local`) läuft der Vokabeltrainer weiterhin
+eigenständig mit lokalem Fortschritt — Supabase ist optional, kein
+Hard-Dependency für die Kernfunktion.
 
 - Neue Migration als eigene, additive Datei unter `migrations/`
   anlegen (Namensschema: `YYYYMMDDHHMMSS_beschreibung.sql`, wie bei

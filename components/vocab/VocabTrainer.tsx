@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import type { VocabCard } from "@/lib/vocab/data";
 import { AffiliateCallout } from "@/components/affiliate/AffiliateCallout";
+import { useSupabaseUser } from "@/lib/hooks/useSupabaseUser";
+import { createClient } from "@/lib/supabase/client";
 
 type Lang = "de" | "en" | "pt" | "es";
 type Tab = "cards" | "quiz" | "stats";
@@ -51,6 +53,8 @@ export function VocabTrainer({ cards }: { cards: VocabCard[] }) {
   });
   const [progress, setProgress] = useState<Progress>({});
   const [hydrated, setHydrated] = useState(false);
+  const { user } = useSupabaseUser();
+  const [syncedUserId, setSyncedUserId] = useState<string | null>(null);
 
   // Fortschritt/Präferenzen kommen aus localStorage — das kann erst nach
   // dem Mount passieren (kein window auf dem Server). Standardwerte oben
@@ -85,6 +89,49 @@ export function VocabTrainer({ cards }: { cards: VocabCard[] }) {
     }
   }, [prefs, hydrated]);
 
+  // Sobald ein Nutzer eingeloggt ist, wird der lokale Fortschritt einmalig
+  // mit der DB abgeglichen: DB-Einträge gewinnen für bereits bekannte
+  // Karten, rein lokale (noch nie synchronisierte) Karten werden hochgeladen.
+  // Danach ist die DB für diesen Nutzer die Quelle der Wahrheit.
+  useEffect(() => {
+    if (!hydrated || !user || syncedUserId === user.id) return;
+    const supabase = createClient();
+
+    (async () => {
+      const { data, error } = await supabase
+        .from("vocab_progress")
+        .select("card_key, box, due, seen")
+        .eq("user_id", user.id);
+
+      if (error) {
+        setSyncedUserId(user.id);
+        return;
+      }
+
+      const dbProgress: Progress = {};
+      (data || []).forEach((row) => {
+        dbProgress[row.card_key] = { box: row.box, due: Number(row.due), seen: row.seen };
+      });
+
+      const localOnlyKeys = Object.keys(progress).filter((key) => !(key in dbProgress));
+      if (localOnlyKeys.length > 0) {
+        await supabase.from("vocab_progress").upsert(
+          localOnlyKeys.map((key) => ({
+            user_id: user.id,
+            card_key: key,
+            box: progress[key].box,
+            due: progress[key].due,
+            seen: progress[key].seen,
+          }))
+        );
+      }
+
+      saveProgress({ ...progress, ...dbProgress });
+      setSyncedUserId(user.id);
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hydrated, user, syncedUserId]);
+
   function saveProgress(next: Progress) {
     setProgress(next);
     try {
@@ -104,11 +151,19 @@ export function VocabTrainer({ cards }: { cards: VocabCard[] }) {
     const now = Date.now();
     const box = correct ? Math.min(p.box + 1, BOX_INTERVAL_DAYS.length - 1) : 0;
     const due = now + BOX_INTERVAL_DAYS[box] * 86400000;
-    const next = {
-      ...progress,
-      [progressKey(cardIndex, from, to)]: { box, due, seen: (p.seen || 0) + 1 },
-    };
-    saveProgress(next);
+    const key = progressKey(cardIndex, from, to);
+    const entry = { box, due, seen: (p.seen || 0) + 1 };
+    saveProgress({ ...progress, [key]: entry });
+
+    if (user) {
+      const supabase = createClient();
+      supabase
+        .from("vocab_progress")
+        .upsert({ user_id: user.id, card_key: key, ...entry })
+        .then(({ error }) => {
+          if (error) console.error("vocab_progress sync failed", error);
+        });
+    }
   }
 
   const filteredIndices = useMemo(

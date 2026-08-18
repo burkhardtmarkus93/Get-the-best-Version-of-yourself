@@ -4,6 +4,7 @@ const navItems = [
   { href: "/torhueter", label: "Für Torhüter" },
   { href: "/eltern", label: "Für Eltern" },
   { href: "/trainer", label: "Für Trainer" },
+  { href: "/konto", label: "Mein Konto" },
 ];
 
 export function SiteHeader() {
