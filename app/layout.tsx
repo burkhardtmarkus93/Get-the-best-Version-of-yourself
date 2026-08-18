@@ -3,6 +3,8 @@ import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { ProductTour } from "@/components/tour/ProductTour";
+import { INTRO_TOUR_STEPS } from "@/lib/tour/steps";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -45,6 +47,7 @@ export default function RootLayout({
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        <ProductTour steps={INTRO_TOUR_STEPS} />
       </body>
     </html>
   );

@@ -42,7 +42,7 @@ export default function HomePage() {
         </p>
       </div>
 
-      <div className="mt-12 grid gap-5 sm:grid-cols-3">
+      <div data-tour-id="tour-home-audiences" className="mt-12 grid gap-5 sm:grid-cols-3">
         {audiences.map((a) => (
           <Link
             key={a.href}

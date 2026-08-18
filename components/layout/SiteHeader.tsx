@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 const navItems = [
-  { href: "/torhueter", label: "Für Torhüter" },
-  { href: "/eltern", label: "Für Eltern" },
-  { href: "/trainer", label: "Für Trainer" },
-  { href: "/konto", label: "Mein Konto" },
+  { href: "/torhueter", label: "Für Torhüter", tourId: "tour-nav-torhueter" },
+  { href: "/eltern", label: "Für Eltern", tourId: "tour-nav-eltern" },
+  { href: "/trainer", label: "Für Trainer", tourId: "tour-nav-trainer" },
+  { href: "/konto", label: "Mein Konto", tourId: "tour-nav-konto" },
 ];
 
 export function SiteHeader() {
@@ -19,6 +19,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
+              data-tour-id={item.tourId}
               className="rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface hover:text-ink"
             >
               {item.label}

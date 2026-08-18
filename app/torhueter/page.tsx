@@ -78,6 +78,7 @@ export default function TorhueterPage() {
             <Link
               key={m.title}
               href={m.href}
+              data-tour-id={m.href === "/torhueter/vokabeln" ? "tour-torhueter-vokabeln" : undefined}
               className="card transition-colors hover:border-pitch/50"
             >
               {content}
