@@ -19,6 +19,11 @@ export function AuthForm() {
     setNotice(null);
     setPending(true);
     const supabase = createClient();
+    if (!supabase) {
+      setError("Konto-Funktion ist aktuell nicht verfügbar. Bitte später erneut versuchen.");
+      setPending(false);
+      return;
+    }
 
     if (mode === "signup") {
       const { error } = await supabase.auth.signUp({
