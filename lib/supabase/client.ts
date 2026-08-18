@@ -4,10 +4,8 @@ import { createBrowserClient } from "@supabase/ssr";
 // in der Datenbank, dieser Client bekommt nur, wofür der eingeloggte
 // Nutzer laut Policy berechtigt ist.
 //
-// Aktuell nutzt noch kein Modul diesen Client (der Vokabeltrainer speichert
-// Fortschritt lokal im Browser) — er ist Teil des übernommenen
-// Grundgerüsts für Module, die ab Phase 2 einen Account/Sync brauchen
-// (z.B. Elternbereich, Trainer-Bereich).
+// Genutzt von AuthForm/useSupabaseUser (Login/Signup) und VocabTrainer
+// (Sync von vocab_progress für eingeloggte Nutzer).
 export function createClient() {
   return createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,

@@ -13,9 +13,12 @@ cp .env.local.example .env.local
 npm run dev
 ```
 
-Für den Vokabeltrainer reicht das bereits aus (kein Supabase-Setup nötig,
-Fortschritt liegt lokal im Browser). Supabase ist als Grundgerüst für
-künftige Module vorbereitet, aber noch nicht aktiv genutzt.
+Ohne Supabase-Setup funktioniert die Seite trotzdem — der Vokabeltrainer
+speichert dann einfach nur lokal im Browser. Für geräteübergreifenden
+Fortschritt (`/konto`) braucht es ein eigenes Supabase-Projekt: Werte aus
+den Projekteinstellungen (`Project URL`, `anon`/`publishable` Key) in
+`.env.local` eintragen und die Migration `vocab_progress` anwenden
+(Tabelle + RLS-Policies, siehe `supabase/migrations` bzw. MCP-Tooling).
 
 ## Bereiche
 
