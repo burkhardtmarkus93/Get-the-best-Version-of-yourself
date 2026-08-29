@@ -40,4 +40,22 @@
   .select-field:focus {
     @apply border-pitch;
   }
+  .legal-prose h2 {
+    @apply mt-8 text-lg font-semibold text-ink first:mt-0;
+  }
+  .legal-prose h3 {
+    @apply mt-5 text-base font-semibold text-ink;
+  }
+  .legal-prose p {
+    @apply mt-2.5 text-sm leading-relaxed text-muted;
+  }
+  .legal-prose ul {
+    @apply mt-2.5 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-muted;
+  }
+  .legal-prose strong {
+    @apply font-semibold text-ink;
+  }
+  .legal-prose a {
+    @apply text-pitch underline-offset-2 hover:underline;
+  }
 }
