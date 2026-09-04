@@ -6,13 +6,18 @@ import { isSupabaseConfigured, supabaseAnonKey, supabaseUrl } from "@/lib/supaba
 // die Plattform noch keine echten Nutzer hat, entsteht diese Aktivität nicht
 // von allein — das Projekt wurde deshalb bereits einmal pausiert.
 //
-// Dieser Endpunkt setzt einmal täglich eine minimale Datenbankabfrage ab
-// (per Vercel Cron, siehe vercel.json) und hält das Projekt so wach.
-// Bewusst eine echte Query gegen Postgres statt nur ein HTTP-Ping, weil
-// nur Datenbankaktivität den Inaktivitäts-Timer zurücksetzt.
+// Erster Versuch war ein täglicher Lesezugriff, der durch RLS null Zeilen
+// zurückgab. Die Requests kamen laut Supabase-Logs zuverlässig an, trotzdem
+// kam erneut eine Pausierungswarnung ("not seen sufficient activity") —
+// ein leerer Lesezugriff pro Tag reicht Supabase offenbar nicht.
+//
+// Deshalb jetzt ein echter Schreibvorgang über die Funktion
+// keepalive_ping() (siehe Migration 20260904053800_keepalive.sql), und
+// zusätzlich ein häufigerer Ping über GitHub Actions, da Vercel im
+// Hobby-Plan nur eine Cron-Ausführung pro Tag erlaubt.
 //
 // Sobald die Plattform echten Traffic hat oder auf einen bezahlten Plan
-// wechselt, kann dieser Cron ersatzlos entfallen.
+// wechselt, kann das alles ersatzlos entfallen.
 
 export const dynamic = "force-dynamic";
 
@@ -39,12 +44,10 @@ export async function GET(request: NextRequest) {
 
   const supabase = createClient(supabaseUrl!, supabaseAnonKey!);
 
-  // Leichtgewichtige Query: durch RLS kommen ohne Session ohnehin keine
-  // Zeilen zurück — die Abfrage erreicht Postgres aber trotzdem, und genau
-  // darum geht es hier.
-  const { error } = await supabase
-    .from("vocab_progress")
-    .select("card_key", { count: "exact", head: true });
+  // Schreibvorgang statt Lesezugriff: aktualisiert einen Zeitstempel in der
+  // keepalive-Tabelle. Die Tabelle selbst ist per RLS gesperrt, geschrieben
+  // wird ausschließlich über diese security-definer-Funktion.
+  const { data, error } = await supabase.rpc("keepalive_ping");
 
   if (error) {
     // Bei einem fehlgeschlagenen Netzwerk-Request liefert supabase-js eine
@@ -55,5 +58,5 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ ok: false, error: reason }, { status: 500 });
   }
 
-  return NextResponse.json({ ok: true, checkedAt: new Date().toISOString() });
+  return NextResponse.json({ ok: true, lastPing: data });
 }

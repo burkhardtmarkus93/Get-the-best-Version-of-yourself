@@ -1,0 +1,44 @@
+# Hält das Supabase-Projekt wach.
+#
+# Zweiter, von Vercel unabhängiger Weg: der Vercel-Cron darf im Hobby-Plan
+# nur einmal täglich laufen, GitHub Actions kann häufiger. Ruft dieselbe
+# Funktion keepalive_ping() auf wie /api/cron/keep-supabase-alive.
+name: Supabase wachhalten
+
+on:
+  schedule:
+    # Alle 6 Stunden. Bewusst nicht zur vollen Stunde — zu Spitzenzeiten
+    # verzögert GitHub geplante Läufe stärker.
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Keepalive-Ping an Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${SUPABASE_URL:-}" ] || [ -z "${SUPABASE_ANON_KEY:-}" ]; then
+            echo "::error::Die Repository-Secrets SUPABASE_URL und SUPABASE_ANON_KEY fehlen."
+            exit 1
+          fi
+
+          status=$(curl -sS -o antwort.json -w "%{http_code}" \
+            -X POST "${SUPABASE_URL}/rest/v1/rpc/keepalive_ping" \
+            -H "apikey: ${SUPABASE_ANON_KEY}" \
+            -H "Authorization: Bearer ${SUPABASE_ANON_KEY}" \
+            -H "Content-Type: application/json" \
+            -d '{}')
+
+          echo "HTTP ${status}"
+          cat antwort.json
+
+          if [ "${status}" != "200" ]; then
+            echo "::error::Keepalive fehlgeschlagen (HTTP ${status})"
+            exit 1
+          fi
