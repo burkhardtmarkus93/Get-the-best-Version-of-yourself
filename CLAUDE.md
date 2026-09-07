@@ -1,10 +1,10 @@
-# CLAUDE.md — Projektregeln für Torwart Akademie
+# CLAUDE.md — Projektregeln für Talent Catcher Academy
 
 Diese Datei gibt Claude verbindliche Regeln für die Arbeit in diesem Repository. Struktur an das Regelwerk von `talent-catcher` angelehnt, Inhalte auf dieses Projekt zugeschnitten.
 
 ## 1. Projektüberblick
 
-Torwart Akademie ist eine Lernplattform für Torhüter, deren Eltern und Trainer:innen mit Interesse am Torwarttraining. Kernidee: Lernmodule (Vokabeln, später Technik/Taktik/Mental) plus Informationsbereiche für die beiden Bezugsgruppen des Kindes — Eltern und Trainer.
+Talent Catcher Academy ist eine Lernplattform für Torhüter, deren Eltern und Trainer:innen mit Interesse am Torwarttraining. Kernidee: Lernmodule (Vokabeln, später Technik/Taktik/Mental) plus Informationsbereiche für die beiden Bezugsgruppen des Kindes — Eltern und Trainer.
 
 **Zielgruppen:** 1. Torhüter (Kinder/Jugendliche), 2. Eltern, 3. Trainer:innen mit Interesse am Torwarttraining.
 

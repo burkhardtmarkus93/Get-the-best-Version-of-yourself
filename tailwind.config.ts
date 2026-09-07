@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 
-// Design-System "Torwart Akademie": Struktur (Text-/Fläche-/Akzent-Token,
+// Design-System "Talent Catcher Academy": Struktur (Text-/Fläche-/Akzent-Token,
 // Ampelfarben als Soft-Tint-Paar) von Talent Catcher übernommen, Palette
 // an das Dunkel-/Lime-Theme des bestehenden Vokabeltrainer-Moduls
 // angeglichen statt eines neuen, unverwandten Farbschemas.

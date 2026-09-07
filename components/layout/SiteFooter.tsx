@@ -34,7 +34,7 @@ export function SiteFooter() {
           </button>
         </div>
         <p className="mt-4">
-          Torwart Akademie · Lernplattform für Torhüter, Eltern und Trainer.
+          Talent Catcher Academy · Lernplattform für Torhüter, Eltern und Trainer.
           Manche Links auf dieser Seite sind Affiliate-Links und als
           &bdquo;Werbung&ldquo; gekennzeichnet.
         </p>

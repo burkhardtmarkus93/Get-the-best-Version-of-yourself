@@ -1,7 +1,7 @@
 import { TopicSection } from "@/components/content/TopicSection";
 import { CueCard } from "@/components/content/CueCard";
 
-export const metadata = { title: "Mentale Stärke · Torwart Akademie" };
+export const metadata = { title: "Mentale Stärke · Talent Catcher Academy" };
 
 export default function MentalPage() {
   return (
