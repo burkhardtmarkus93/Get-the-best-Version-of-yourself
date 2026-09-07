@@ -33,7 +33,7 @@ export default function HomePage() {
       <div className="max-w-2xl">
         <span className="badge">Lernplattform</span>
         <h1 className="mt-4 text-4xl font-semibold text-ink">
-          Torwart Akademie
+          Talent Catcher Academy
         </h1>
         <p className="mt-4 text-lg text-muted">
           Alles rund ums Torwartspiel an einem Ort — für Torhüter selbst,

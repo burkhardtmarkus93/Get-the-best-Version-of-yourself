@@ -3,19 +3,19 @@ import { LEGAL } from "@/lib/legal/config";
 import { PLANS, formatEuro } from "@/lib/plans";
 
 export const metadata = {
-  title: "AGB · Torwart Akademie",
+  title: "AGB · Talent Catcher Academy",
 };
 
 export default function AgbPage() {
   return (
     <LegalPage
       title="Allgemeine Geschäftsbedingungen"
-      intro="Für die Nutzung der kostenpflichtigen Abonnements der Torwart Akademie."
+      intro="Für die Nutzung der kostenpflichtigen Abonnements der Talent Catcher Academy."
     >
       <h2>§ 1 Geltungsbereich und Vertragspartner</h2>
       <p>
         Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge
-        über kostenpflichtige Abonnements der Torwart Akademie zwischen{" "}
+        über kostenpflichtige Abonnements der Talent Catcher Academy zwischen{" "}
         {LEGAL.betreiberName}, {LEGAL.strasse}, {LEGAL.plzOrt} (nachfolgend
         „Anbieter") und dem Kunden.
       </p>

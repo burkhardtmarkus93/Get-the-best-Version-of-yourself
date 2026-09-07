@@ -1,4 +1,4 @@
-# 🧤 Torwart Akademie
+# 🎯 Talent Catcher Academy
 
 Lernplattform für Torhüter, ihre Eltern und Trainer:innen mit Interesse
 am Torwarttraining. Tech-Stack und Projektstruktur an

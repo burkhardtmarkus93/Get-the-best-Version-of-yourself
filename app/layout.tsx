@@ -28,7 +28,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Torwart Akademie",
+  title: "Talent Catcher Academy",
   description:
     "Lernplattform für Torhüter, ihre Eltern und Trainer mit Interesse am Torwarttraining.",
 };

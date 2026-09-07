@@ -2,7 +2,7 @@ import { getAllVocabCards } from "@/lib/vocab/data";
 import { VocabTrainer } from "@/components/vocab/VocabTrainer";
 
 export const metadata = {
-  title: "Fußballwörter Trainer · Torwart Akademie",
+  title: "Fußballwörter Trainer · Talent Catcher Academy",
 };
 
 export default function VokabelnPage() {

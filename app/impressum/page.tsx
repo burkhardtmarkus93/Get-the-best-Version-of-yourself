@@ -2,7 +2,7 @@ import { LegalPage } from "@/components/legal/LegalPage";
 import { LEGAL } from "@/lib/legal/config";
 
 export const metadata = {
-  title: "Impressum · Torwart Akademie",
+  title: "Impressum · Talent Catcher Academy",
 };
 
 export default function ImpressumPage() {

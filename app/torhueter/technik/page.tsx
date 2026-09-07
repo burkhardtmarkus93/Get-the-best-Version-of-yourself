@@ -1,7 +1,7 @@
 import { TopicSection } from "@/components/content/TopicSection";
 import { CueCard } from "@/components/content/CueCard";
 
-export const metadata = { title: "Technik-Grundlagen · Torwart Akademie" };
+export const metadata = { title: "Technik-Grundlagen · Talent Catcher Academy" };
 
 export default function TechnikPage() {
   return (

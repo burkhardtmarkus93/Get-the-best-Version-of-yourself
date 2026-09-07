@@ -11,7 +11,7 @@ export interface TourStep {
 export const INTRO_TOUR_STEPS: TourStep[] = [
   {
     id: "welcome",
-    title: "Willkommen bei der Torwart Akademie",
+    title: "Willkommen bei der Talent Catcher Academy",
     body: "Ein kurzer Rundgang durch die wichtigsten Bereiche — jederzeit unten im Footer über „Erste-Schritte-Tour“ erneut startbar.",
   },
   {

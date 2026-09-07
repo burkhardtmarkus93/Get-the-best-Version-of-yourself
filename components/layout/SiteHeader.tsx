@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const navItems = [
@@ -10,13 +11,29 @@ const navItems = [
 
 export function SiteHeader() {
   return (
-    <header className="border-b border-line">
-      {/* Auf schmalen Displays untereinander und umbrechend: die
-          Navigation passt sonst nicht in eine Zeile und die ganze Seite
-          lässt sich seitlich verschieben. */}
+    <header className="border-b border-bar-line bg-bar">
+      {/* Auf schmalen Displays untereinander: Logo und Navigation passen
+          sonst nicht nebeneinander und die Seite ließe sich seitlich
+          verschieben. */}
       <div className="mx-auto flex max-w-5xl flex-col items-start gap-2 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-        <Link href="/" className="font-display text-lg font-semibold text-ink">
-          🧤 Torwart Akademie
+        {/* Logo in der dunklen Schriftfassung, passend zur weißen Kopfzeile.
+            Die Datei liegt als PNG vor — das Ausgangslogo ist eine
+            Pixelgrafik, es gibt keine Vektorquelle.
+            shrink-0 ist nötig, sonst quetscht der Flex-Container das Bild
+            auf schmalen Displays zusammen. */}
+        <Link
+          href="/"
+          aria-label="Talent Catcher Academy — zur Startseite"
+          className="shrink-0"
+        >
+          <Image
+            src="/logo-quer-hell.png"
+            alt="Talent Catcher Academy"
+            width={951}
+            height={168}
+            priority
+            className="h-10 w-auto sm:h-11"
+          />
         </Link>
         <nav className="-mx-1 flex flex-wrap gap-x-1">
           {navItems.map((item) => (
@@ -24,7 +41,7 @@ export function SiteHeader() {
               key={item.href}
               href={item.href}
               data-tour-id={item.tourId}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface hover:text-ink"
+              className="rounded-lg px-3 py-2 text-sm font-medium text-bar-muted transition-colors hover:bg-bar-hover hover:text-bar-ink"
             >
               {item.label}
             </Link>
