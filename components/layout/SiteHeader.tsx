@@ -10,13 +10,13 @@ const navItems = [
 
 export function SiteHeader() {
   return (
-    <header className="border-b border-line">
+    <header className="border-b border-bar-line bg-bar">
       {/* Auf schmalen Displays untereinander: Logo und Navigation passen
           sonst nicht nebeneinander und die Seite ließe sich seitlich
           verschieben. */}
       <div className="mx-auto flex max-w-5xl flex-col items-start gap-2 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-        {/* Die helle Fassung des Logos, weil die Seite auf dunklem Grund
-            läuft. Die Datei liegt als PNG vor — das Ausgangslogo ist eine
+        {/* Logo in der dunklen Schriftfassung, passend zur weißen Kopfzeile.
+            Die Datei liegt als PNG vor — das Ausgangslogo ist eine
             Pixelgrafik, es gibt keine Vektorquelle.
             shrink-0 ist nötig, sonst quetscht der Flex-Container das Bild
             auf schmalen Displays zusammen. */}
@@ -26,7 +26,7 @@ export function SiteHeader() {
           className="shrink-0"
         >
           <Image
-            src="/logo-quer.png"
+            src="/logo-quer-hell.png"
             alt="Talent Catcher Academy"
             width={951}
             height={168}
@@ -40,7 +40,7 @@ export function SiteHeader() {
               key={item.href}
               href={item.href}
               data-tour-id={item.tourId}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface hover:text-ink"
+              className="rounded-lg px-3 py-2 text-sm font-medium text-bar-muted transition-colors hover:bg-bar-hover hover:text-bar-ink"
             >
               {item.label}
             </Link>
