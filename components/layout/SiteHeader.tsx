@@ -29,7 +29,7 @@ export function SiteHeader() {
           <Image
             src="/logo-quer-hell.png"
             alt="Talent Catcher Academy"
-            width={951}
+            width={839}
             height={168}
             priority
             className="h-10 w-auto sm:h-11"
