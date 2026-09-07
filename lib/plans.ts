@@ -77,6 +77,22 @@ export const PLANS: Record<PlanKey, Plan> = {
 // ohne automatische Umwandlung in ein kostenpflichtiges Abo (siehe AGB § 4).
 export const TRIAL_DAYS = 2;
 
+// Solange die Stripe-Anbindung nicht steht, sind alle Inhalte frei nutzbar.
+// Die Preisseite weist dann sichtbar darauf hin und bietet keinen
+// Kaufen-Button an, der ins Leere läuft. Auf true setzen, sobald der
+// Checkout live ist.
+export const SUBSCRIPTIONS_LIVE = false;
+
+// Ersparnis im Jahresabo gegenüber zwölf Monatszahlungen.
+export function yearlySavings(plan: Plan): number {
+  return plan.priceMonthly * 12 - plan.priceYearly;
+}
+
+// Rechnerischer Monatspreis im Jahresabo.
+export function effectiveMonthly(plan: Plan): number {
+  return plan.priceYearly / 12;
+}
+
 export function formatEuro(amount: number): string {
   return new Intl.NumberFormat("de-DE", {
     style: "currency",
