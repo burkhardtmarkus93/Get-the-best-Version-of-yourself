@@ -5,6 +5,7 @@ const navItems = [
   { href: "/torhueter", label: "Für Torhüter", tourId: "tour-nav-torhueter" },
   { href: "/eltern", label: "Für Eltern", tourId: "tour-nav-eltern" },
   { href: "/trainer", label: "Für Trainer", tourId: "tour-nav-trainer" },
+  { href: "/preise", label: "Preise", tourId: "tour-nav-preise" },
   { href: "/konto", label: "Mein Konto", tourId: "tour-nav-konto" },
 ];
 
