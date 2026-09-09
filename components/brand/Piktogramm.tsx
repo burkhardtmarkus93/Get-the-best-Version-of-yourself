@@ -7,6 +7,9 @@
 // Neue Piktogramme bitte im selben Raster anlegen: sichtbare Zeichnung
 // zwischen 10 und 62, damit alle gleich schwer wirken.
 
+import { useId } from "react";
+import { BALL } from "./ball";
+
 export type PiktogrammName =
   | "ball"
   | "tor"
@@ -23,17 +26,9 @@ export type PiktogrammName =
 
 // Jeder Eintrag: Pfade (d-Attribute) und optionale Kreise.
 const ZEICHNUNGEN: Record<
-  PiktogrammName,
+  Exclude<PiktogrammName, "ball">,
   { pfade: string[]; kreise?: [number, number, number][] }
 > = {
-  // Fußball: Kreis, Fünfeck in der Mitte, fünf Speichen nach außen.
-  ball: {
-    kreise: [[36, 36, 22]],
-    pfade: [
-      "M36 28 L43.6 33.5 L40.7 42.5 H31.3 L28.4 33.5 Z",
-      "M36 28 V14 M43.6 33.5 L56.9 29.2 M40.7 42.5 L48.9 53.8 M31.3 42.5 L23.1 53.8 M28.4 33.5 L15.1 29.2",
-    ],
-  },
   // Tor von vorn: Pfosten, Latte, wenig Netz — mehr Linien und es wird
   // bei 30 px zum Kamm.
   tor: {
@@ -95,7 +90,7 @@ export interface PiktogrammProps {
 }
 
 export function Piktogramm({ name, className }: PiktogrammProps) {
-  const zeichnung = ZEICHNUNGEN[name];
+  const clipId = useId();
   return (
     <span
       className={
@@ -115,12 +110,31 @@ export function Piktogramm({ name, className }: PiktogrammProps) {
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        {zeichnung.kreise?.map(([cx, cy, r]) => (
-          <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r={r} />
-        ))}
-        {zeichnung.pfade.map((d) => (
-          <path key={d} d={d} />
-        ))}
+        {name === "ball" ? (
+          // Derselbe Ball wie im Zeichen, nur als Flächen: Flicken und
+          // Umriss schwarz, die Ballfläche bleibt das Grün des Kreises.
+          // Im Zeichen sitzt der Ball zwischen den Ecken (Radius 16), hier
+          // füllt er das Raster wie die anderen Piktogramme (Radius 25).
+          <g transform="translate(36 36) scale(1.55) translate(-36 -36)">
+            <clipPath id={clipId}>
+              <circle cx={BALL.cx} cy={BALL.cy} r={BALL.r} />
+            </clipPath>
+            <g clipPath={`url(#${clipId})`}>
+              <path d={BALL.flicken} className="fill-pictogram" stroke="none" />
+            </g>
+            <path d={BALL.naehte} strokeWidth={BALL.strich * 0.6} />
+            <circle cx={BALL.cx} cy={BALL.cy} r={BALL.r} strokeWidth={BALL.strich} />
+          </g>
+        ) : (
+          <>
+            {ZEICHNUNGEN[name].kreise?.map(([cx, cy, r]) => (
+              <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r={r} />
+            ))}
+            {ZEICHNUNGEN[name].pfade.map((d) => (
+              <path key={d} d={d} />
+            ))}
+          </>
+        )}
       </svg>
     </span>
   );

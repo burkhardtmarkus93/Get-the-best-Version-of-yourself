@@ -1,11 +1,17 @@
-// Das Zeichen der Marke: vier Ecken, Mittellinie, Mittelkreis — die
-// Kleinfassung aus der Markenvorgabe. Sie ist die einzige Fassung, die
-// die Plattform verwendet (Entscheidung vom 9. September 2026: die
-// Vollfassung mit Strafräumen und Anstoßpunkt bleibt in der Schublade).
+import { useId } from "react";
+import { BALL } from "./ball";
+
+// Das Zeichen der Marke: vier Ecken, darin ein Fußball. Die Ecken sind
+// der einzige gestalterische Bezug zu Talent Catcher und bleiben; der
+// Ball trägt den Fußball-Bezug (Entscheidung vom 9. September 2026,
+// siehe Issue #17). Die Plattform verwendet das Zeichen nur in der
+// Kopfzeile und als App-Symbol.
 //
 // Farben kommen aus den Design-Tokens (siehe `tailwind.config.ts`),
-// nicht als Literale: auf hellem Grund Ecken in `pitch` und Linien in
-// `ink`, auf dunklem Grund Ecken in `pitch-bright` und Linien in `paper`.
+// nicht als Literale: Ecken in `pitch` (hell) bzw. `pitch-bright`
+// (dunkel), Flicken und Umriss immer in `ink`, die Ballfläche in
+// `surface` (hell) bzw. `paper` (dunkel) — ein heller Ball auf beiden
+// Untergründen.
 
 export interface MarkProps {
   /** Kantenlänge in Pixeln. */
@@ -16,8 +22,11 @@ export interface MarkProps {
 }
 
 export function Mark({ size, grund = "hell", className }: MarkProps) {
+  // Der Beschnitt der Randflicken braucht eine clipPath-ID; useId hält
+  // sie eindeutig, auch wenn das Zeichen mehrfach auf einer Seite steht.
+  const clipId = useId();
   const ecken = grund === "hell" ? "stroke-pitch" : "stroke-pitch-bright";
-  const linien = grund === "hell" ? "stroke-ink" : "stroke-paper";
+  const kugel = grund === "hell" ? "fill-surface" : "fill-paper";
 
   return (
     <svg
@@ -40,10 +49,28 @@ export function Mark({ size, grund = "hell", className }: MarkProps) {
         <path d="M64 48 V64 H48" />
         <path d="M24 64 H8 V48" />
       </g>
-      <g className={linien} fill="none" strokeWidth={4.5} strokeLinecap="round">
-        <path d="M22 36 H50" />
-        <circle cx="36" cy="36" r="8" />
+      <clipPath id={clipId}>
+        <circle cx={BALL.cx} cy={BALL.cy} r={BALL.r} />
+      </clipPath>
+      <circle cx={BALL.cx} cy={BALL.cy} r={BALL.r} className={kugel} />
+      <g clipPath={`url(#${clipId})`}>
+        <path d={BALL.flicken} className="fill-ink" />
       </g>
+      <path
+        d={BALL.naehte}
+        fill="none"
+        className="stroke-ink"
+        strokeWidth={BALL.strich * 0.6}
+        strokeLinecap="round"
+      />
+      <circle
+        cx={BALL.cx}
+        cy={BALL.cy}
+        r={BALL.r}
+        fill="none"
+        className="stroke-ink"
+        strokeWidth={BALL.strich}
+      />
     </svg>
   );
 }
