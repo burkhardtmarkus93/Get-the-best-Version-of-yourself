@@ -51,13 +51,9 @@ export default function HomePage() {
             Torwartposition an, weitere Positionen folgen.
           </p>
         </div>
-        {/* Das Zeichen in der Vollfassung als ruhiges Ornament neben dem
-            Namen — groß genug für Strafräume und Anstoßpunkt, erst ab
+        {/* Das Zeichen als ruhiges Ornament neben dem Namen — erst ab
             mittlerer Breite, damit es auf dem Handy keinen Platz nimmt. */}
-        <Mark
-          size={144}
-          className="hidden shrink-0 opacity-70 md:block"
-        />
+        <Mark size={144} className="hidden shrink-0 md:block" />
       </div>
 
       <div data-tour-id="tour-home-audiences" className="mt-12 grid gap-5 sm:grid-cols-3">
@@ -70,7 +66,7 @@ export default function HomePage() {
             <Piktogramm name={a.piktogramm} />
             <h2 className="text-lg text-ink">{a.title}</h2>
             <p className="flex-1 text-sm text-muted">{a.description}</p>
-            <span className="text-sm font-medium text-pitch">
+            <span className="text-sm font-medium text-pitch-deep">
               {a.cta} →
             </span>
           </Link>

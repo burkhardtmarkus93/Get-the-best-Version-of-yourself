@@ -24,18 +24,17 @@
   .card {
     @apply rounded-xl border border-line bg-surface p-6;
   }
-  /* Hover als abgedunkeltes Limettengrün statt `pitch-dark`: der dunkle
-     Grünton der Markenvorgabe ist für hellen Grund gedacht und trüge die
-     dunkle Buttonschrift nur noch mit 4,4:1 — zu wenig für 14 px. */
+  /* Limettengrün als Fläche mit dunkler Schrift (10:1). Hover dunkelt die
+     Fläche leicht ab statt eine weitere Farbe einzuführen. */
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-lg bg-pitch px-4 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-pitch/85;
+    @apply inline-flex items-center justify-center rounded-lg bg-pitch-bright px-4 py-2.5 text-sm font-semibold text-ink transition hover:brightness-95;
   }
   .btn-ghost {
     @apply inline-flex items-center justify-center rounded-lg border border-line px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:border-pitch/50 hover:text-pitch;
   }
   /* Gesperrte Versalien wie ACADEMY in der Wortmarke. */
   .badge {
-    @apply inline-flex items-center rounded-full bg-pitch-dim px-2.5 py-1 text-xs font-medium uppercase tracking-[0.18em] text-pitch;
+    @apply inline-flex items-center rounded-full bg-pitch-dim px-2.5 py-1 text-xs font-medium uppercase tracking-[0.18em] text-pitch-deep;
   }
   .badge-muted {
     @apply inline-flex items-center rounded-full bg-surface2 px-2.5 py-1 text-xs font-medium uppercase tracking-[0.18em] text-muted;

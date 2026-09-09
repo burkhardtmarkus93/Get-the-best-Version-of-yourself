@@ -52,7 +52,7 @@ export function AuthForm() {
           onClick={() => { setMode("login"); setError(null); setNotice(null); }}
           className={
             "flex-1 rounded-full px-4 py-2 text-sm font-medium transition-colors " +
-            (mode === "login" ? "bg-pitch text-paper" : "border border-line text-muted hover:text-ink")
+            (mode === "login" ? "bg-pitch-bright text-ink hover:brightness-95" : "border border-line text-muted hover:text-ink")
           }
         >
           Anmelden
@@ -61,7 +61,7 @@ export function AuthForm() {
           onClick={() => { setMode("signup"); setError(null); setNotice(null); }}
           className={
             "flex-1 rounded-full px-4 py-2 text-sm font-medium transition-colors " +
-            (mode === "signup" ? "bg-pitch text-paper" : "border border-line text-muted hover:text-ink")
+            (mode === "signup" ? "bg-pitch-bright text-ink hover:brightness-95" : "border border-line text-muted hover:text-ink")
           }
         >
           Registrieren
@@ -98,7 +98,7 @@ export function AuthForm() {
         </div>
 
         {error && <p className="text-sm text-brick">{error}</p>}
-        {notice && <p className="text-sm text-pitch">{notice}</p>}
+        {notice && <p className="text-sm text-pitch-deep">{notice}</p>}
 
         <button type="submit" disabled={pending} className="btn-primary mt-1 disabled:opacity-50">
           {pending ? "Einen Moment …" : mode === "signup" ? "Konto erstellen" : "Anmelden"}

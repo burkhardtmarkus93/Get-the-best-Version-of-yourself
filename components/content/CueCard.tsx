@@ -15,7 +15,7 @@ export function CueCard({
         <ul className="mt-3 flex flex-col gap-1.5">
           {cues.map((cue) => (
             <li key={cue} className="flex gap-2 text-sm text-ink">
-              <span className="mt-0.5 text-pitch">•</span>
+              <span className="mt-0.5 text-pitch-deep">•</span>
               <span>{cue}</span>
             </li>
           ))}

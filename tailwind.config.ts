@@ -4,11 +4,15 @@ import type { Config } from "tailwindcss";
 // 9. September 2026: Dunkel #121417, Limettengrün #9AE34D, Schwarz
 // #111111 für Piktogramme, Hell #F2F4EF. Kein Türkis.
 //
-// Die Struktur (Text-/Flächen-/Akzent-Token, Ampelfarben als
-// Soft-Tint-Paar) bleibt wie gehabt, nur die Werte sind auf die
-// Markenfarben umgestellt. Alles, was nicht direkt in der Vorgabe steht
-// (Zwischenflächen, Trennlinien, Sekundärtext), ist aus den vier
-// Markenfarben abgeleitet und unten einzeln vermerkt.
+// Die Oberfläche steht auf hellem Grund — so wie die Wortmarke in der
+// Kopfzeile: Ecken in Grün, Linien und Schrift in Dunkel. Das
+// Limettengrün ist auf Hell zu schwach für Text und dient deshalb nur als
+// Fläche mit dunkler Schrift darauf (Buttons, Piktogramm-Kreise); für
+// Akzenttext gibt es den dunkleren Grünton der Vorgabe.
+//
+// Alles, was nicht direkt in der Vorgabe steht (Zwischenflächen,
+// Trennlinien, Sekundärtext), ist aus den vier Markenfarben abgeleitet
+// und unten einzeln vermerkt.
 const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
@@ -17,35 +21,35 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#F2F4EF",        // Haupttext auf dunklem Grund — Marke "Hell"
-        paper: "#121417",      // Seitenhintergrund — Marke "Dunkel"
-        surface: "#191C20",    // Karten-/Panelflächen, aus Dunkel aufgehellt
-        surface2: "#232830",   // Karten-Flächen, zweite Ebene
+        ink: "#121417",        // Haupttext — Marke "Dunkel"
+        paper: "#F2F4EF",      // Seitenhintergrund — Marke "Hell"
+        surface: "#FFFFFF",    // Karten-/Panelflächen
+        surface2: "#E7EBE2",   // zweite Ebene: Felder, graue Badges
         pitch: {
-          DEFAULT: "#9AE34D",  // Primärakzent: Limettengrün der Marke
-          dark: "#4E8A1B",     // Grünton für hellen Grund (Vorgabe)
-          dim: "#222D1E",      // dunkler Soft-Tint (Badges, Hover)
+          DEFAULT: "#4E8A1B",  // Grün auf hellem Grund (Vorgabe): Ecken, Rahmen, Symbole
+          deep: "#3F7414",     // Akzenttext und Links — 5:1 auf Hell
+          bright: "#9AE34D",   // Limettengrün als Fläche, dunkle Schrift darauf
+          dim: "#E3F3D0",      // heller Grün-Tint: Badges, Hover
         },
         amber: {
-          DEFAULT: "#D98C1B",
-          dim: "#332617",
+          DEFAULT: "#8A5306",  // Hinweistext — 5:1 auf dem Tint
+          dim: "#F7EBD3",
         },
         brick: {
-          DEFAULT: "#E5626B",
-          dim: "#331D1F",
+          DEFAULT: "#B8323C",  // Fehlertext — 4,7:1 auf dem Tint
+          dim: "#F9E0E2",
         },
-        line: "#2A2F36",       // Trennlinien, Card-Border
-        muted: "#9AA3AE",      // Sekundärtext
+        line: "#D5DAD2",       // Trennlinien, Card-Border
+        muted: "#5A6169",      // Sekundärtext — 5,6:1 auf Hell
         pictogram: "#111111",  // Piktogramme (Vorgabe)
-        // Helle Balken für Kopf- und Fußzeile. Der Inhaltsbereich bleibt
-        // dunkel; oben und unten rahmt die helle Markenfarbe, auf der die
-        // Wortmarke in ihrer Hell-Grund-Fassung steht.
+        // Kopf- und Fußzeile: reines Weiß, damit sie sich vom Hell des
+        // Seitenhintergrunds noch abheben.
         bar: {
-          DEFAULT: "#F2F4EF",  // Fläche der Kopf-/Fußzeile — Marke "Hell"
-          ink: "#121417",      // Haupttext darauf — Marke "Dunkel"
-          muted: "#5A6169",    // Sekundärtext darauf
-          line: "#DCE0D8",     // Trennlinie zum dunklen Inhaltsbereich
-          hover: "#E7EBE2",    // Hover-Fläche für Navigationslinks
+          DEFAULT: "#FFFFFF",
+          ink: "#121417",
+          muted: "#5A6169",
+          line: "#D5DAD2",
+          hover: "#EEF2EA",
         },
       },
       // Markenvorgabe: Schrift ist Inter — auch für Überschriften. `display`

@@ -10,9 +10,6 @@ import { Mark } from "./Mark";
 // umgerechnet auf ein 44 px hohes Zeichen. Einzige Abweichung: ACADEMY
 // stünde nach der Dateifassung bei rund 7 px und wäre damit zu klein zum
 // Lesen; in der Kopfzeile steht es deshalb auf 9 px.
-//
-// Das Zeichen ist mit 44 px kleiner als 48 px, `Mark` schaltet also nach
-// Markenvorgabe automatisch auf die Kleinfassung.
 
 const ZEICHEN_GROESSE = 44;
 
@@ -22,9 +19,9 @@ export interface WordmarkProps {
   className?: string;
 }
 
-export function Wordmark({ grund = "dunkel", className }: WordmarkProps) {
-  const campo = grund === "hell" ? "text-bar-ink" : "text-ink";
-  const academy = grund === "hell" ? "text-pitch-dark" : "text-pitch";
+export function Wordmark({ grund = "hell", className }: WordmarkProps) {
+  const campo = grund === "hell" ? "text-ink" : "text-paper";
+  const academy = grund === "hell" ? "text-pitch" : "text-pitch-bright";
 
   return (
     <span className={"inline-flex items-center gap-3 " + (className ?? "")}>
