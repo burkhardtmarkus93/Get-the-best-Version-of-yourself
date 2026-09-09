@@ -22,8 +22,11 @@
   .card {
     @apply rounded-xl border border-line bg-surface p-6;
   }
+  /* Hover als abgedunkeltes Limettengrün statt `pitch-dark`: der dunkle
+     Grünton der Markenvorgabe ist für hellen Grund gedacht und trüge die
+     dunkle Buttonschrift nur noch mit 4,4:1 — zu wenig für 14 px. */
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-lg bg-pitch px-4 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-pitch-dark;
+    @apply inline-flex items-center justify-center rounded-lg bg-pitch px-4 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-pitch/85;
   }
   .btn-ghost {
     @apply inline-flex items-center justify-center rounded-lg border border-line px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:border-pitch/50 hover:text-pitch;

@@ -1,4 +1,4 @@
-// Zentrale Plan-Definition für die Talent Catcher Academy.
+// Zentrale Plan-Definition für die Campo Academy.
 //
 // Preisherleitung (Stand August 2026, Quellen im zugehörigen Issue):
 // Direkte Torwart-Konkurrenz liegt bei Goalplay (Oliver Kahn) bei

@@ -1,7 +1,7 @@
 import { TopicSection } from "@/components/content/TopicSection";
 import { CueCard } from "@/components/content/CueCard";
 
-export const metadata = { title: "Taktik-Grundlagen · Talent Catcher Academy" };
+export const metadata = { title: "Taktik-Grundlagen" };
 
 export default function TaktikPage() {
   return (

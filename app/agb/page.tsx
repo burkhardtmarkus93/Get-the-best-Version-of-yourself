@@ -3,19 +3,19 @@ import { LEGAL } from "@/lib/legal/config";
 import { PLANS, formatEuro } from "@/lib/plans";
 
 export const metadata = {
-  title: "AGB · Talent Catcher Academy",
+  title: "AGB",
 };
 
 export default function AgbPage() {
   return (
     <LegalPage
       title="Allgemeine Geschäftsbedingungen"
-      intro="Für die Nutzung der kostenpflichtigen Abonnements der Talent Catcher Academy."
+      intro="Für die Nutzung der kostenpflichtigen Abonnements der Campo Academy."
     >
       <h2>§ 1 Geltungsbereich und Vertragspartner</h2>
       <p>
         Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge
-        über kostenpflichtige Abonnements der Talent Catcher Academy zwischen{" "}
+        über kostenpflichtige Abonnements der Campo Academy zwischen{" "}
         {LEGAL.betreiberName}, {LEGAL.strasse}, {LEGAL.plzOrt} (nachfolgend
         „Anbieter") und dem Kunden.
       </p>

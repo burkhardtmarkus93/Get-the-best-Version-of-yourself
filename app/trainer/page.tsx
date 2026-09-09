@@ -3,7 +3,7 @@ import { coachingLicenses, coachingTopics } from "@/lib/career/coaching-topics";
 import { TopicSection } from "@/components/content/TopicSection";
 import { CueCard } from "@/components/content/CueCard";
 
-export const metadata = { title: "Für Trainer · Talent Catcher Academy" };
+export const metadata = { title: "Für Trainer" };
 
 export default function TrainerPage() {
   return (
