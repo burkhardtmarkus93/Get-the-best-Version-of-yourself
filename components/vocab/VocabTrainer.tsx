@@ -237,7 +237,7 @@ export function VocabTrainer({ cards }: { cards: VocabCard[] }) {
                 className={
                   "rounded-full border px-3 py-1 text-xs font-medium transition-colors " +
                   (prefs.categories.includes(cat)
-                    ? "border-pitch bg-pitch-dim text-pitch"
+                    ? "border-pitch bg-pitch-dim text-pitch-deep"
                     : "border-line bg-surface2 text-muted hover:text-ink")
                 }
               >
@@ -262,7 +262,7 @@ export function VocabTrainer({ cards }: { cards: VocabCard[] }) {
             className={
               "rounded-full px-4 py-2 text-sm font-medium transition-colors " +
               (tab === id
-                ? "bg-pitch text-paper"
+                ? "bg-pitch-bright text-ink hover:brightness-95"
                 : "border border-line text-muted hover:text-ink")
             }
           >
@@ -394,7 +394,7 @@ function FlashcardsTab({
             ❌ Wusste ich nicht
           </button>
           <button
-            className="flex-1 rounded-lg border border-pitch bg-pitch-dim px-4 py-3 text-sm font-semibold text-pitch"
+            className="flex-1 rounded-lg border border-pitch bg-pitch-dim px-4 py-3 text-sm font-semibold text-pitch-deep"
             onClick={() => rate(true)}
           >
             ✅ Wusste ich
@@ -506,7 +506,7 @@ function QuizTab({
                     className={
                       "rounded-lg border px-3 py-3 text-left text-sm transition-colors " +
                       (showState && isCorrectOpt
-                        ? "border-pitch bg-pitch-dim text-pitch"
+                        ? "border-pitch bg-pitch-dim text-pitch-deep"
                         : showState && opt === answered
                         ? "border-brick bg-brick-dim text-brick"
                         : "border-line bg-surface2 text-ink hover:border-pitch/50")

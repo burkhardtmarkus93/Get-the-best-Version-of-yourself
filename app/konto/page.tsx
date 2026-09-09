@@ -46,7 +46,7 @@ export default function KontoPage() {
           <div className="card max-w-sm">
             <p className="text-sm text-muted">Angemeldet als</p>
             <p className="mt-1 font-medium text-ink">{user.email}</p>
-            <p className="mt-3 text-sm text-pitch">
+            <p className="mt-3 text-sm text-pitch-deep">
               ✅ Fortschritt wird synchronisiert
             </p>
             <button onClick={handleLogout} className="btn-ghost mt-4">

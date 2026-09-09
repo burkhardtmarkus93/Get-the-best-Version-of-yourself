@@ -44,7 +44,7 @@ export function PricingTable() {
               className={
                 "rounded-full px-5 py-2 text-sm font-medium transition-colors " +
                 (interval === value
-                  ? "bg-pitch text-paper"
+                  ? "bg-pitch-bright text-ink hover:brightness-95"
                   : "text-muted hover:text-ink")
               }
             >
@@ -104,7 +104,7 @@ export function PricingTable() {
               <ul className="mt-6 flex flex-1 flex-col gap-2.5">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex gap-2.5 text-sm text-ink">
-                    <span aria-hidden className="mt-0.5 text-pitch">
+                    <span aria-hidden className="mt-0.5 text-pitch-deep">
                       ✓
                     </span>
                     <span>{feature}</span>

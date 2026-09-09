@@ -1,37 +1,23 @@
-// Das Zeichen der Marke: das Spielfeld. Vier Ecken, Mittellinie,
-// Mittelkreis, Anstoßpunkt, zwei Strafräume.
-//
-// Die Markenvorgabe schreibt ab 48 px abwärts die Kleinfassung vor —
-// nur Ecken, Mittellinie, Mittelkreis. Diese Regel steckt hier in der
-// Komponente, damit sie nicht an jeder Aufrufstelle neu bedacht werden
-// muss: wer `size` unter 48 setzt, bekommt automatisch die Kleinfassung.
+// Das Zeichen der Marke: vier Ecken, Mittellinie, Mittelkreis — die
+// Kleinfassung aus der Markenvorgabe. Sie ist die einzige Fassung, die
+// die Plattform verwendet (Entscheidung vom 9. September 2026: die
+// Vollfassung mit Strafräumen und Anstoßpunkt bleibt in der Schublade).
 //
 // Farben kommen aus den Design-Tokens (siehe `tailwind.config.ts`),
-// nicht als Literale: auf dunklem Grund Ecken in `pitch` und Linien in
-// `ink`, auf hellem Grund Ecken in `pitch-dark` und Linien in `bar-ink`.
-
-const GRENZE_KLEINFASSUNG = 48;
+// nicht als Literale: auf hellem Grund Ecken in `pitch` und Linien in
+// `ink`, auf dunklem Grund Ecken in `pitch-bright` und Linien in `paper`.
 
 export interface MarkProps {
-  /** Kantenlänge in Pixeln. Unter 48 px greift die Kleinfassung. */
+  /** Kantenlänge in Pixeln. */
   size: number;
   /** Untergrund, auf dem das Zeichen steht. */
   grund?: "hell" | "dunkel";
-  /** Kleinfassung erzwingen, unabhängig von der Größe. */
-  klein?: boolean;
   className?: string;
 }
 
-export function Mark({
-  size,
-  grund = "dunkel",
-  klein,
-  className,
-}: MarkProps) {
-  const kleinfassung = klein ?? size < GRENZE_KLEINFASSUNG;
-  const ecken = grund === "hell" ? "stroke-pitch-dark" : "stroke-pitch";
-  const linien = grund === "hell" ? "stroke-bar-ink" : "stroke-ink";
-  const punkt = grund === "hell" ? "fill-bar-ink" : "fill-ink";
+export function Mark({ size, grund = "hell", className }: MarkProps) {
+  const ecken = grund === "hell" ? "stroke-pitch" : "stroke-pitch-bright";
+  const linien = grund === "hell" ? "stroke-ink" : "stroke-paper";
 
   return (
     <svg
@@ -54,25 +40,10 @@ export function Mark({
         <path d="M64 48 V64 H48" />
         <path d="M24 64 H8 V48" />
       </g>
-      <g
-        className={linien}
-        fill="none"
-        strokeWidth={kleinfassung ? 4.5 : 3.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
+      <g className={linien} fill="none" strokeWidth={4.5} strokeLinecap="round">
         <path d="M22 36 H50" />
-        <circle cx="36" cy="36" r={kleinfassung ? 8 : 7.5} />
-        {!kleinfassung && (
-          <>
-            <path d="M27 8 V17 H45 V8" />
-            <path d="M27 64 V55 H45 V64" />
-          </>
-        )}
+        <circle cx="36" cy="36" r="8" />
       </g>
-      {!kleinfassung && (
-        <circle cx="36" cy="36" r="2" className={punkt} />
-      )}
     </svg>
   );
 }

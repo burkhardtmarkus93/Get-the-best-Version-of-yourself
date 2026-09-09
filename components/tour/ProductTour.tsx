@@ -130,7 +130,7 @@ export function ProductTour({ steps }: { steps: TourStep[] }) {
           }}
         />
       ) : (
-        <div className="fixed inset-0 z-40 bg-paper/80" aria-hidden />
+        <div className="fixed inset-0 z-40 bg-ink/75" aria-hidden />
       )}
 
       <div
@@ -178,7 +178,7 @@ export function ProductTour({ steps }: { steps: TourStep[] }) {
                 if (isLast) handleClose();
                 else setStepIndex((i) => i + 1);
               }}
-              className="rounded-lg bg-pitch px-3 py-1.5 text-xs font-medium text-paper shadow-sm transition-colors hover:bg-pitch/85"
+              className="rounded-lg bg-pitch-bright px-3 py-1.5 text-xs font-medium text-ink shadow-sm transition hover:brightness-95"
             >
               {isLast ? "Los geht's" : "Weiter"}
             </button>

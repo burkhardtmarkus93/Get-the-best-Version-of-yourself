@@ -59,7 +59,7 @@ export default function ElternPage() {
             key={step.age}
             className="card w-40 shrink-0"
           >
-            <span className="text-xs font-semibold text-pitch">
+            <span className="text-xs font-semibold text-pitch-deep">
               {step.age}
             </span>
             <p className="mt-1 text-sm font-semibold text-ink">
