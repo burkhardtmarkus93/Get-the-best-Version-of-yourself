@@ -1,7 +1,7 @@
 import { TopicSection } from "@/components/content/TopicSection";
 import { CueCard } from "@/components/content/CueCard";
 
-export const metadata = { title: "Athletik & Ernährung · Talent Catcher Academy" };
+export const metadata = { title: "Athletik & Ernährung" };
 
 export default function AthletikPage() {
   return (

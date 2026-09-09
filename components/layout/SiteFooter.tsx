@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { startIntroTour } from "@/components/tour/ProductTour";
+import { SITE_NAME } from "@/lib/brand/config";
 
 const legalLinks = [
   { href: "/impressum", label: "Impressum" },
@@ -34,7 +35,7 @@ export function SiteFooter() {
           </button>
         </div>
         <p className="mt-4">
-          Talent Catcher Academy · Lernplattform für Torhüter, Eltern und Trainer.
+          {SITE_NAME} · Lernplattform für Torhüter, Eltern und Trainer.
           Manche Links auf dieser Seite sind Affiliate-Links und als
           &bdquo;Werbung&ldquo; gekennzeichnet.
         </p>

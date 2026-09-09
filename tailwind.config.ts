@@ -1,9 +1,14 @@
 import type { Config } from "tailwindcss";
 
-// Design-System "Talent Catcher Academy": Struktur (Text-/Fläche-/Akzent-Token,
-// Ampelfarben als Soft-Tint-Paar) von Talent Catcher übernommen, Palette
-// an das Dunkel-/Lime-Theme des bestehenden Vokabeltrainer-Moduls
-// angeglichen statt eines neuen, unverwandten Farbschemas.
+// Design-System "Campo Academy". Die Palette folgt der Markenvorgabe vom
+// 9. September 2026: Dunkel #121417, Limettengrün #9AE34D, Schwarz
+// #111111 für Piktogramme, Hell #F2F4EF. Kein Türkis.
+//
+// Die Struktur (Text-/Flächen-/Akzent-Token, Ampelfarben als
+// Soft-Tint-Paar) bleibt wie gehabt, nur die Werte sind auf die
+// Markenfarben umgestellt. Alles, was nicht direkt in der Vorgabe steht
+// (Zwischenflächen, Trennlinien, Sekundärtext), ist aus den vier
+// Markenfarben abgeleitet und unten einzeln vermerkt.
 const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
@@ -12,14 +17,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#EEF2EE",        // Haupttext auf dunklem Grund
-        paper: "#0F1310",      // Seitenhintergrund
-        surface: "#171D18",    // Karten-/Panelflächen
-        surface2: "#1F2721",   // Karten-Flächen, zweite Ebene
+        ink: "#F2F4EF",        // Haupttext auf dunklem Grund — Marke "Hell"
+        paper: "#121417",      // Seitenhintergrund — Marke "Dunkel"
+        surface: "#191C20",    // Karten-/Panelflächen, aus Dunkel aufgehellt
+        surface2: "#232830",   // Karten-Flächen, zweite Ebene
         pitch: {
-          DEFAULT: "#C6F24E",  // Primärakzent: Lime (aus dem Vokabeltrainer)
-          dark: "#8FB52E",     // Hover-/Pressed-Ton
-          dim: "#26311C",      // dunkler Soft-Tint-Hintergrund (Badges, Hover)
+          DEFAULT: "#9AE34D",  // Primärakzent: Limettengrün der Marke
+          dark: "#4E8A1B",     // Grünton für hellen Grund (Vorgabe)
+          dim: "#222D1E",      // dunkler Soft-Tint (Badges, Hover)
         },
         amber: {
           DEFAULT: "#D98C1B",
@@ -29,18 +34,18 @@ const config: Config = {
           DEFAULT: "#E5626B",
           dim: "#331D1F",
         },
-        line: "#2B352D",       // Trennlinien, Card-Border
-        muted: "#9FB0A2",      // Sekundärtext
+        line: "#2A2F36",       // Trennlinien, Card-Border
+        muted: "#9AA3AE",      // Sekundärtext
+        pictogram: "#111111",  // Piktogramme (Vorgabe)
         // Helle Balken für Kopf- und Fußzeile. Der Inhaltsbereich bleibt
-        // dunkel; oben und unten rahmt eine weiße Fläche, auf der das Logo
-        // in seiner hellen Fassung steht. Eigene Tokens statt Inline-Werten,
-        // damit alle Farben an einer Stelle liegen (siehe CLAUDE.md §2).
+        // dunkel; oben und unten rahmt die helle Markenfarbe, auf der die
+        // Wortmarke in ihrer Hell-Grund-Fassung steht.
         bar: {
-          DEFAULT: "#FFFFFF",  // Fläche der Kopf-/Fußzeile
-          ink: "#1D2523",      // Haupttext darauf — entspricht der Logo-Schrift
-          muted: "#5F6E69",    // Sekundärtext darauf
-          line: "#DDE3E1",     // Trennlinie zum dunklen Inhaltsbereich
-          hover: "#EEF2F0",    // Hover-Fläche für Navigationslinks
+          DEFAULT: "#F2F4EF",  // Fläche der Kopf-/Fußzeile — Marke "Hell"
+          ink: "#121417",      // Haupttext darauf — Marke "Dunkel"
+          muted: "#5A6169",    // Sekundärtext darauf
+          line: "#DCE0D8",     // Trennlinie zum dunklen Inhaltsbereich
+          hover: "#E7EBE2",    // Hover-Fläche für Navigationslinks
         },
       },
       fontFamily: {

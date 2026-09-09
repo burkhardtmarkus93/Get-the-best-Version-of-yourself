@@ -4,7 +4,7 @@ import { LEGAL } from "@/lib/legal/config";
 import { SUBSCRIPTIONS_LIVE, TRIAL_DAYS } from "@/lib/plans";
 
 export const metadata = {
-  title: "Preise · Talent Catcher Academy",
+  title: "Preise",
   description:
     "Drei Abos für Torhüter, Eltern und Trainer:innen — monatlich oder jährlich, jederzeit kündbar.",
 };

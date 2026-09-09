@@ -1,12 +1,16 @@
-# CLAUDE.md — Projektregeln für Talent Catcher Academy
+# CLAUDE.md — Projektregeln für Campo Academy
 
 Diese Datei gibt Claude verbindliche Regeln für die Arbeit in diesem Repository. Struktur an das Regelwerk von `talent-catcher` angelehnt, Inhalte auf dieses Projekt zugeschnitten.
 
 ## 1. Projektüberblick
 
-Talent Catcher Academy ist eine Lernplattform für Torhüter, deren Eltern und Trainer:innen mit Interesse am Torwarttraining. Kernidee: Lernmodule (Vokabeln, später Technik/Taktik/Mental) plus Informationsbereiche für die beiden Bezugsgruppen des Kindes — Eltern und Trainer.
+Campo Academy ist eine Lernplattform für Torhüter, deren Eltern und Trainer:innen mit Interesse am Torwarttraining. Kernidee: Lernmodule (Vokabeln, später Technik/Taktik/Mental) plus Informationsbereiche für die beiden Bezugsgruppen des Kindes — Eltern und Trainer.
 
 **Zielgruppen:** 1. Torhüter (Kinder/Jugendliche), 2. Eltern, 3. Trainer:innen mit Interesse am Torwarttraining.
+
+**Marke (Vorgabe vom 9. September 2026):** Die Plattform heißt **Campo Academy**. „Academy" bleibt in allen Sprachen englisch, wird also auch im deutschen Text nie zu „Akademie". Farben: Dunkel `#121417`, Limettengrün `#9AE34D`, Schwarz `#111111` für Piktogramme, Hell `#F2F4EF` — **kein Türkis**. Schrift der Marke ist Inter; die Wortmarke setzt CAMPO in 800 und ACADEMY in 500 gesperrt darunter. Das Zeichen ist das Spielfeld, ab 48 px abwärts in der Kleinfassung (nur Ecken, Mittellinie, Mittelkreis).
+
+Campo Academy und **Talent Catcher sind getrennte Projekte**. Der einzige zulässige Bezug ist die Form der Ecken im Zeichen — nie Farbe, Name, Daten oder Konten. Konkret: keine Talent-Catcher-Logos oder -Farben einbauen, und die Supabase- bzw. Vercel-Zugänge der beiden Projekte nicht vermischen.
 
 **Monetarisierung (wichtig für Priorisierung):**
 - **Phase 1 (jetzt erlaubt):** Affiliate-Links zu thematisch passenden Angeboten (z. B. Englischkurs), immer sichtbar als "Werbung"/"Affiliate-Link" gekennzeichnet (§ 5a UWG). Siehe `lib/affiliate/config.ts`.
@@ -19,7 +23,8 @@ Wenn eine Aufgabe implizit in Richtung Phase 2 geht (z. B. "bau eine Produktempf
 - **Next.js 14** mit App Router — kein Pages Router verwenden
 - **React 18**, **TypeScript** — kein plain JavaScript für neue Dateien
 - **Supabase** für Datenbank, Auth und Row-Level-Security (`@supabase/ssr`, `@supabase/supabase-js`) — aktuell nur als Grundgerüst vorhanden (`lib/supabase/`), noch kein Modul nutzt es aktiv
-- **Tailwind CSS** fürs Styling, Design-Tokens in `tailwind.config.ts` (Farben: `ink`/`paper`/`surface`/`pitch`/`amber`/`brick`/`line`/`muted`) — keine Inline-Styles oder neue Farbwerte außerhalb dieser Tokens
+- **Tailwind CSS** fürs Styling, Design-Tokens in `tailwind.config.ts` (Farben: `ink`/`paper`/`surface`/`pitch`/`amber`/`brick`/`line`/`muted`/`bar`/`pictogram`) — keine Inline-Styles oder neue Farbwerte außerhalb dieser Tokens
+- **Marken-Assets**: Zeichen und Wortmarke als Komponenten unter `components/brand/`, die exportierbaren Dateifassungen (SVG für Social Media, Presse, Favicon) unter `public/marke/`. Den Markennamen nicht als Literal in Seiten schreiben, sondern `SITE_NAME` aus `lib/brand/config.ts` verwenden bzw. bei Seitentiteln die Titel-Vorlage aus `app/layout.tsx` greifen lassen
 - Neue Lernmodule als eigene Route unter `app/torhueter/<modulname>/`, mit zugehöriger Client-Komponente unter `components/<modulname>/`
 
 ## 3. Grundprinzip: Zielgruppe enthält Minderjährige

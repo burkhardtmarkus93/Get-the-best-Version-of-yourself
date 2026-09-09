@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { careerTimeline } from "@/lib/career/timeline";
 
-export const metadata = { title: "Für Eltern · Talent Catcher Academy" };
+export const metadata = { title: "Für Eltern" };
 
 const topics = [
   {

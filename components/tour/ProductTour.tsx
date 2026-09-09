@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import type { TourStep } from "@/lib/tour/steps";
 
-const SEEN_KEY = "torwartAkademie.tourSeen.v1";
+const SEEN_KEY = "campoAcademy.tourSeen.v1";
 
 // Andere Komponenten lösen den erneuten Start (z. B. der Footer-Link
 // "Erste-Schritte-Tour") über dieses window-Event aus, statt über Props/

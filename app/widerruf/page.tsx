@@ -2,7 +2,7 @@ import { LegalPage } from "@/components/legal/LegalPage";
 import { LEGAL } from "@/lib/legal/config";
 
 export const metadata = {
-  title: "Widerrufsbelehrung · Talent Catcher Academy",
+  title: "Widerrufsbelehrung",
 };
 
 export default function WiderrufPage() {

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE_NAME } from "@/lib/brand/config";
 
 const audiences = [
   {
@@ -32,8 +33,11 @@ export default function HomePage() {
     <div className="mx-auto max-w-5xl px-4 py-16">
       <div className="max-w-2xl">
         <span className="badge">Lernplattform</span>
-        <h1 className="mt-4 text-4xl font-semibold text-ink">
-          Talent Catcher Academy
+        {/* Der Markenname steht bewusst in Inter statt in der
+            Display-Schrift: die Markenvorgabe nennt Inter als Schrift der
+            Marke, ein serifiger Namenszug widerspräche der Wortmarke. */}
+        <h1 className="mt-4 font-sans text-4xl font-extrabold tracking-[0.04em] text-ink">
+          {SITE_NAME}
         </h1>
         <p className="mt-4 text-lg text-muted">
           Alles rund ums Torwartspiel an einem Ort — für Torhüter selbst,

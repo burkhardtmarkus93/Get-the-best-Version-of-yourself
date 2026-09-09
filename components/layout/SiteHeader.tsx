@@ -1,5 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
+import { Wordmark } from "@/components/brand/Wordmark";
+import { SITE_NAME } from "@/lib/brand/config";
 
 const navItems = [
   { href: "/torhueter", label: "Für Torhüter", tourId: "tour-nav-torhueter" },
@@ -12,28 +13,16 @@ const navItems = [
 export function SiteHeader() {
   return (
     <header className="border-b border-bar-line bg-bar">
-      {/* Auf schmalen Displays untereinander: Logo und Navigation passen
-          sonst nicht nebeneinander und die Seite ließe sich seitlich
-          verschieben. */}
+      {/* Auf schmalen Displays untereinander: Wortmarke und Navigation
+          passen sonst nicht nebeneinander und die Seite ließe sich
+          seitlich verschieben. */}
       <div className="mx-auto flex max-w-5xl flex-col items-start gap-2 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-        {/* Logo in der dunklen Schriftfassung, passend zur weißen Kopfzeile.
-            Die Datei liegt als PNG vor — das Ausgangslogo ist eine
-            Pixelgrafik, es gibt keine Vektorquelle.
-            shrink-0 ist nötig, sonst quetscht der Flex-Container das Bild
-            auf schmalen Displays zusammen. */}
         <Link
           href="/"
-          aria-label="Talent Catcher Academy — zur Startseite"
+          aria-label={`${SITE_NAME} — zur Startseite`}
           className="shrink-0"
         >
-          <Image
-            src="/logo-quer-hell.png"
-            alt="Talent Catcher Academy"
-            width={839}
-            height={168}
-            priority
-            className="h-10 w-auto sm:h-11"
-          />
+          <Wordmark grund="hell" />
         </Link>
         <nav className="-mx-1 flex flex-wrap gap-x-1">
           {navItems.map((item) => (
