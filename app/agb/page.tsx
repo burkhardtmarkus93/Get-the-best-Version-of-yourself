@@ -33,7 +33,7 @@ export default function AgbPage() {
           Personen geschlossen werden.
         </strong>{" "}
         Minderjährige können selbst kein Abonnement abschließen. Soll ein
-        minderjähriger Torhüter die Inhalte nutzen, schließen die
+        minderjähriger Spieler oder eine minderjährige Spielerin die Inhalte nutzen, schließen die
         Erziehungsberechtigten den Vertrag im eigenen Namen ab und stellen
         den Zugang bereit; sie bleiben Vertrags- und Zahlungspartei.
       </p>
@@ -45,7 +45,7 @@ export default function AgbPage() {
       <h2>§ 3 Leistungsbeschreibung</h2>
       <p>
         Der Anbieter stellt über die Plattform digitale Lerninhalte rund um
-        das Torwartspiel bereit. Der konkrete Leistungsumfang richtet sich
+        das Fußballspiel bereit. Der konkrete Leistungsumfang richtet sich
         nach dem gewählten Abonnement:
       </p>
       <ul>

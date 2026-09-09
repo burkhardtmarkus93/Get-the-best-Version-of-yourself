@@ -102,7 +102,7 @@ export default function DatenschutzPage() {
         Unsere Lerninhalte richten sich auch an Kinder und Jugendliche.
         Kundenkonten und kostenpflichtige Abonnements dürfen jedoch
         ausschließlich von volljährigen Personen angelegt bzw. abgeschlossen
-        werden. Nutzt ein minderjähriger Torhüter die Inhalte, geschieht dies
+        werden. Nutzt ein minderjähriges Kind die Inhalte, geschieht dies
         über den Zugang der Erziehungsberechtigten, die auch
         datenschutzrechtlich Ansprechpartner bleiben.
       </p>

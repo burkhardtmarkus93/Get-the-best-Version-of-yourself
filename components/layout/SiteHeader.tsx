@@ -3,7 +3,7 @@ import { Wordmark } from "@/components/brand/Wordmark";
 import { SITE_NAME } from "@/lib/brand/config";
 
 const navItems = [
-  { href: "/torhueter", label: "Für Torhüter", tourId: "tour-nav-torhueter" },
+  { href: "/spieler", label: "Für Spieler", tourId: "tour-nav-spieler" },
   { href: "/eltern", label: "Für Eltern", tourId: "tour-nav-eltern" },
   { href: "/trainer", label: "Für Trainer", tourId: "tour-nav-trainer" },
   { href: "/preise", label: "Preise", tourId: "tour-nav-preise" },

@@ -41,8 +41,9 @@ export default function ElternPage() {
     <div className="mx-auto max-w-3xl px-4 py-12">
       <h1 className="text-2xl font-semibold text-ink">Für Eltern</h1>
       <p className="mt-2 text-muted">
-        Ein Überblick, was auf dem Weg zum Torhüter wichtig wird — und wie
-        ihr euer Kind dabei unterstützen könnt.
+        Ein Überblick, was auf dem Weg im Fußball wichtig wird — und wie ihr
+        euer Kind dabei unterstützen könnt. Die Beispiele kommen zunächst aus
+        dem Torwartspiel, das meiste gilt für jede Position.
       </p>
 
       <h2 className="mt-10 text-lg font-semibold text-ink">
@@ -81,10 +82,10 @@ export default function ElternPage() {
 
       <div className="card mt-10 flex flex-wrap items-center justify-between gap-4">
         <p className="text-sm text-ink">
-          Neugierig, was euer Kind gerade übt? Die Torhüter-Lernmodule
-          sind frei zugänglich.
+          Neugierig, was euer Kind gerade übt? Die Lernmodule für
+          Spieler:innen sind frei zugänglich.
         </p>
-        <Link href="/torhueter" className="btn-ghost shrink-0">
+        <Link href="/spieler" className="btn-ghost shrink-0">
           Module ansehen →
         </Link>
       </div>

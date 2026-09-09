@@ -124,7 +124,9 @@ export function ProductTour({ steps }: { steps: TourStep[] }) {
             left: rect.left - 8,
             width: rect.width + 16,
             height: rect.height + 16,
-            boxShadow: "0 0 0 9999px rgba(15, 19, 16, 0.75)",
+            // Abdunklung in `paper` (#121417) — als Box-Shadow, weil ein
+            // Ausschnitt im Overlay anders nicht geht.
+            boxShadow: "0 0 0 9999px rgba(18, 20, 23, 0.75)",
           }}
         />
       ) : (
@@ -152,7 +154,7 @@ export function ProductTour({ steps }: { steps: TourStep[] }) {
           </button>
         </div>
 
-        <h3 className="font-display text-lg font-medium text-ink">{step.title}</h3>
+        <h3 className="text-lg text-ink">{step.title}</h3>
         <p className="mt-1.5 text-sm text-muted">{step.body}</p>
 
         <div className="mt-4 flex items-center justify-between">
@@ -176,7 +178,7 @@ export function ProductTour({ steps }: { steps: TourStep[] }) {
                 if (isLast) handleClose();
                 else setStepIndex((i) => i + 1);
               }}
-              className="rounded-lg bg-pitch px-3 py-1.5 text-xs font-medium text-paper shadow-sm transition-colors hover:bg-pitch-dark"
+              className="rounded-lg bg-pitch px-3 py-1.5 text-xs font-medium text-paper shadow-sm transition-colors hover:bg-pitch/85"
             >
               {isLast ? "Los geht's" : "Weiter"}
             </button>

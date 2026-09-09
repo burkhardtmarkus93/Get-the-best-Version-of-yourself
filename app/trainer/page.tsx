@@ -10,8 +10,9 @@ export default function TrainerPage() {
     <div className="mx-auto max-w-3xl px-4 py-12">
       <h1 className="text-2xl font-semibold text-ink">Für Trainer</h1>
       <p className="mt-2 text-muted">
-        Für Trainer:innen, die sich für Torwarttraining interessieren —
-        egal ob als Einstieg oder Vertiefung neben der Feldspieler-Lizenz.
+        Für Trainer:innen im Jugendfußball. Den Anfang macht das
+        Torwarttraining — egal ob als Einstieg oder Vertiefung neben der
+        Feldspieler-Lizenz; weitere Positionen folgen.
       </p>
 
       <h2 className="mt-10 text-lg font-semibold text-ink">

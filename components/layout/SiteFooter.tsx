@@ -35,7 +35,7 @@ export function SiteFooter() {
           </button>
         </div>
         <p className="mt-4">
-          {SITE_NAME} · Lernplattform für Torhüter, Eltern und Trainer.
+          {SITE_NAME} · Lernplattform für Fußballer:innen, Eltern und Trainer:innen.
           Manche Links auf dieser Seite sind Affiliate-Links und als
           &bdquo;Werbung&ldquo; gekennzeichnet.
         </p>

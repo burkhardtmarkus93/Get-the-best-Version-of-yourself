@@ -48,8 +48,11 @@ const config: Config = {
           hover: "#E7EBE2",    // Hover-Fläche für Navigationslinks
         },
       },
+      // Markenvorgabe: Schrift ist Inter — auch für Überschriften. `display`
+      // bleibt als Token bestehen, damit die Aufrufstellen nicht wissen
+      // müssen, ob Überschriften und Fließtext dieselbe Schrift nutzen.
       fontFamily: {
-        display: ["var(--font-fraunces)", "serif"],
+        display: ["var(--font-inter)", "sans-serif"],
         sans: ["var(--font-inter)", "sans-serif"],
         mono: ["var(--font-plex-mono)", "monospace"],
       },

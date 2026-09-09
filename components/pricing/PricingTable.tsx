@@ -13,11 +13,11 @@ import {
   type PlanKey,
 } from "@/lib/plans";
 
-// Reihenfolge bewusst so: Torhüter steht in der Mitte und ist hervorgehoben,
+// Reihenfolge bewusst so: Spieler steht in der Mitte und ist hervorgehoben,
 // weil es das Kernangebot ist. Eltern links (günstigster Einstieg), Trainer
 // rechts (umfangreichster Zugang).
-const ORDER: PlanKey[] = ["eltern", "torhueter", "trainer"];
-const HIGHLIGHT: PlanKey = "torhueter";
+const ORDER: PlanKey[] = ["eltern", "spieler", "trainer"];
+const HIGHLIGHT: PlanKey = "spieler";
 
 export function PricingTable() {
   const [interval, setInterval] = useState<BillingInterval>("monatlich");
@@ -77,7 +77,7 @@ export function PricingTable() {
                 <span className="badge mb-3 self-start">Kernangebot</span>
               )}
 
-              <h2 className="font-display text-xl font-semibold text-ink">
+              <h2 className="text-xl text-ink">
                 {plan.name}
               </h2>
               <p className="mt-1 text-sm text-muted">{plan.tagline}</p>

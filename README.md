@@ -1,7 +1,7 @@
 # ⬛ Campo Academy
 
-Lernplattform für Torhüter, ihre Eltern und Trainer:innen mit Interesse
-am Torwarttraining. Tech-Stack und Projektstruktur an
+Lernplattform für Fußballer:innen, ihre Eltern und Trainer:innen. Den
+Anfang macht die Torwartposition, weitere Positionen folgen. Tech-Stack und Projektstruktur an
 [`talent-catcher`](https://github.com/burkhardtmarkus93/talent-catcher)
 angelehnt.
 
@@ -22,14 +22,17 @@ den Projekteinstellungen (`Project URL`, `anon`/`publishable` Key) in
 
 ## Bereiche
 
-- **`/torhueter`** — Fünf Lernmodule für Torhüter selbst: Fußballwörter
+- **`/spieler`** — Positionsauswahl; Torhüter verfügbar, Abwehr,
+  Mittelfeld und Sturm in Vorbereitung.
+- **`/torhueter`** — Fünf Lernmodule für Torhüter: Fußballwörter
   Trainer (449 Begriffe, 4 Sprachen, Leitner-System + Quiz),
   Technik-Grundlagen, Taktik-Grundlagen, Athletik & Ernährung, Mentale
   Stärke.
 - **`/eltern`** — Orientierung für Eltern: Werdegang vom Bambini zum
   Torhüter im Herrenbereich, sechs Themen von Ausrüstung bis
   Spieltag-Begleitung.
-- **`/trainer`** — Für Trainer:innen mit Interesse am Torwarttraining:
+- **`/trainer`** — Für Trainer:innen im Jugendfußball, zunächst mit
+  Schwerpunkt Torwarttraining:
   Lizenzwege, Themenbereiche, Coaching-Prinzipien und
   Trainingssteuerung.
 
