@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Mark } from "@/components/brand/Mark";
 import { Piktogramm, type PiktogrammName } from "@/components/brand/Piktogramm";
 import { SITE_NAME } from "@/lib/brand/config";
 
@@ -39,21 +38,18 @@ const audiences: {
 export default function HomePage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-16">
-      <div className="flex items-start justify-between gap-8">
-        <div className="max-w-2xl">
-          <span className="badge">Lernplattform</span>
-          <h1 className="mt-4 text-4xl font-extrabold text-ink sm:text-5xl">
-            {SITE_NAME}
-          </h1>
-          <p className="mt-4 text-lg text-muted">
-            Alles rund ums Fußballspiel an einem Ort — für Spieler:innen
-            selbst, ihre Eltern und Trainer:innen. Wir fangen bei der
-            Torwartposition an, weitere Positionen folgen.
-          </p>
-        </div>
-        {/* Das Zeichen als ruhiges Ornament neben dem Namen — erst ab
-            mittlerer Breite, damit es auf dem Handy keinen Platz nimmt. */}
-        <Mark size={144} className="hidden shrink-0 md:block" />
+      {/* Das Zeichen steht nur in der Kopfzeile — bewusst nicht noch
+          einmal groß neben dem Namen. */}
+      <div className="max-w-2xl">
+        <span className="badge">Lernplattform</span>
+        <h1 className="mt-4 text-4xl font-extrabold text-ink sm:text-5xl">
+          {SITE_NAME}
+        </h1>
+        <p className="mt-4 text-lg text-muted">
+          Alles rund ums Fußballspiel an einem Ort — für Spieler:innen
+          selbst, ihre Eltern und Trainer:innen. Wir fangen bei der
+          Torwartposition an, weitere Positionen folgen.
+        </p>
       </div>
 
       <div data-tour-id="tour-home-audiences" className="mt-12 grid gap-5 sm:grid-cols-3">
