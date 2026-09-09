@@ -6,7 +6,7 @@ import { SUBSCRIPTIONS_LIVE, TRIAL_DAYS } from "@/lib/plans";
 export const metadata = {
   title: "Preise",
   description:
-    "Drei Abos für Torhüter, Eltern und Trainer:innen — monatlich oder jährlich, jederzeit kündbar.",
+    "Drei Abos für Spieler:innen, Eltern und Trainer:innen — monatlich oder jährlich, jederzeit kündbar.",
 };
 
 // Bewusst knapp gehalten: eine Entscheidung pro Abschnitt, kurze Listen,
@@ -16,7 +16,7 @@ const FAQ = [
   {
     frage: "Wer schließt das Abo ab, wenn mein Kind lernen will?",
     antwort:
-      "Immer eine volljährige Person. Auch das Torhüter-Abo wird von einem Elternteil abgeschlossen und bezahlt — das Kind nutzt es dann. Ein Vertrag, den ein Kind selbst abschließt, wäre rechtlich nicht wirksam.",
+      "Immer eine volljährige Person. Auch das Spieler-Abo wird von einem Elternteil abgeschlossen und bezahlt — das Kind nutzt es dann. Ein Vertrag, den ein Kind selbst abschließt, wäre rechtlich nicht wirksam.",
   },
   {
     frage: "Wie kündige ich?",
@@ -30,7 +30,7 @@ const FAQ = [
   {
     frage: "Brauche ich alle drei Abos?",
     antwort:
-      "Nein. Die meisten Familien brauchen genau eins. Das Trainer-Abo schließt die Torhüter-Module mit ein, ist also für Trainer:innen die einzige nötige Stufe.",
+      "Nein. Die meisten Familien brauchen genau eins. Das Trainer-Abo schließt die Spieler-Module mit ein, ist also für Trainer:innen die einzige nötige Stufe.",
   },
 ];
 
@@ -38,7 +38,7 @@ export default function PreisePage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-16">
       <div className="mx-auto max-w-2xl text-center">
-        <h1 className="font-display text-3xl font-semibold text-ink">Preise</h1>
+        <h1 className="text-3xl text-ink">Preise</h1>
         <p className="mt-3 text-muted">
           Drei Bereiche, drei Abos. Such dir den aus, der zu dir passt — mehr
           brauchst du nicht.
@@ -81,7 +81,7 @@ export default function PreisePage() {
       </div>
 
       <div className="mx-auto mt-16 max-w-2xl">
-        <h2 className="font-display text-xl font-semibold text-ink">
+        <h2 className="text-xl text-ink">
           Häufige Fragen
         </h2>
         <div className="mt-4 flex flex-col gap-2">

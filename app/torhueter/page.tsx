@@ -1,9 +1,18 @@
 import Link from "next/link";
+import { Piktogramm, type PiktogrammName } from "@/components/brand/Piktogramm";
 
-const modules = [
+export const metadata = { title: "Torhüter" };
+
+const modules: {
+  href?: string;
+  piktogramm: PiktogrammName;
+  title: string;
+  description: string;
+  status: string;
+}[] = [
   {
     href: "/torhueter/vokabeln",
-    emoji: "⚽",
+    piktogramm: "sprache",
     title: "Fußballwörter Trainer",
     description:
       "449 Fachbegriffe aus 13 Kategorien in Deutsch, Englisch, Portugiesisch und Spanisch — als Karteikarten oder Quiz.",
@@ -11,7 +20,7 @@ const modules = [
   },
   {
     href: "/torhueter/technik",
-    emoji: "🥅",
+    piktogramm: "handschuh",
     title: "Technik-Grundlagen",
     description:
       "Grundstellung, Fangen, Fallen, Hechten, Spieleröffnung — Schritt für Schritt erklärt.",
@@ -19,7 +28,7 @@ const modules = [
   },
   {
     href: "/torhueter/taktik",
-    emoji: "📐",
+    piktogramm: "taktik",
     title: "Taktik-Grundlagen",
     description:
       "Stellungsspiel, Ballgewinnspiel, Spielaufbau und Standardsituationen.",
@@ -27,7 +36,7 @@ const modules = [
   },
   {
     href: "/torhueter/athletik",
-    emoji: "💪",
+    piktogramm: "athletik",
     title: "Athletik & Ernährung",
     description:
       "Beweglichkeit, Kraft, Schnelligkeit — plus Ernährung und Regeneration rund ums Spiel.",
@@ -35,7 +44,7 @@ const modules = [
   },
   {
     href: "/torhueter/mental",
-    emoji: "🧠",
+    piktogramm: "mental",
     title: "Mentale Stärke",
     description: "Umgang mit Fehlern, Drucksituationen und Rückschlägen.",
     status: "Verfügbar",
@@ -45,7 +54,16 @@ const modules = [
 export default function TorhueterPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-16">
-      <h1 className="text-3xl font-semibold text-ink">Für Torhüter</h1>
+      <Link
+        href="/spieler"
+        className="text-sm text-muted underline-offset-2 hover:text-ink hover:underline"
+      >
+        ← Alle Positionen
+      </Link>
+      <div className="mt-4 flex items-center gap-4">
+        <Piktogramm name="tor" />
+        <h1 className="text-3xl text-ink">Torhüter</h1>
+      </div>
       <p className="mt-3 max-w-2xl text-muted">
         Lernmodule zum eigenen Tempo durcharbeiten. Neue Module kommen
         laufend dazu.
@@ -56,20 +74,12 @@ export default function TorhueterPage() {
           const content = (
             <>
               <div className="flex items-start justify-between gap-3">
-                <span className="text-3xl">{m.emoji}</span>
-                <span
-                  className={
-                    m.href
-                      ? "badge"
-                      : "inline-flex items-center rounded-full bg-surface2 px-2.5 py-1 text-xs font-medium uppercase tracking-wide text-muted"
-                  }
-                >
+                <Piktogramm name={m.piktogramm} />
+                <span className={m.href ? "badge" : "badge-muted"}>
                   {m.status}
                 </span>
               </div>
-              <h2 className="mt-3 text-lg font-semibold text-ink">
-                {m.title}
-              </h2>
+              <h2 className="mt-4 text-lg text-ink">{m.title}</h2>
               <p className="mt-1 text-sm text-muted">{m.description}</p>
             </>
           );

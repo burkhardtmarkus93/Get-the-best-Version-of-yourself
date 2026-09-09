@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -7,14 +7,8 @@ import { ProductTour } from "@/components/tour/ProductTour";
 import { INTRO_TOUR_STEPS } from "@/lib/tour/steps";
 import { SITE_NAME } from "@/lib/brand/config";
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  weight: ["500", "600"],
-  variable: "--font-fraunces",
-  display: "swap",
-});
-
-// 800 wird für die Wortmarke gebraucht (CAMPO), siehe Markenvorgabe.
+// Inter ist laut Markenvorgabe die Schrift der Marke — für Wortmarke,
+// Überschriften und Fließtext. 800 wird für CAMPO gebraucht.
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -37,7 +31,7 @@ export const metadata: Metadata = {
     template: `%s · ${SITE_NAME}`,
   },
   description:
-    "Lernplattform für Torhüter, ihre Eltern und Trainer mit Interesse am Torwarttraining.",
+    "Lernplattform für Fußballer:innen, ihre Eltern und Trainer:innen — den Anfang macht die Torwartposition.",
 };
 
 export default function RootLayout({
@@ -48,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="de"
-      className={`${fraunces.variable} ${inter.variable} ${plexMono.variable}`}
+      className={`${inter.variable} ${plexMono.variable}`}
     >
       <body className="flex min-h-screen flex-col">
         <SiteHeader />

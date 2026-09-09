@@ -1,29 +1,37 @@
 import Link from "next/link";
+import { Mark } from "@/components/brand/Mark";
+import { Piktogramm, type PiktogrammName } from "@/components/brand/Piktogramm";
 import { SITE_NAME } from "@/lib/brand/config";
 
-const audiences = [
+const audiences: {
+  href: string;
+  piktogramm: PiktogrammName;
+  title: string;
+  description: string;
+  cta: string;
+}[] = [
   {
-    href: "/torhueter",
-    emoji: "🧤",
-    title: "Für Torhüter",
+    href: "/spieler",
+    piktogramm: "ball",
+    title: "Für Spieler",
     description:
-      "Fachvokabular, Technik, Taktik, Athletik & Ernährung, Mentale Stärke — fünf Module zum eigenen Tempo.",
-    cta: "Module ansehen",
+      "Lernmodule je Position, zum eigenen Tempo. Den Anfang macht der Torhüter: Fachvokabular, Technik, Taktik, Athletik & Ernährung, Mentale Stärke.",
+    cta: "Positionen ansehen",
   },
   {
     href: "/eltern",
-    emoji: "👨‍👩‍👧",
+    piktogramm: "eltern",
     title: "Für Eltern",
     description:
-      "Was Eltern über die Torwartausbildung ihres Kindes wissen sollten — Werdegang, Ausrüstung, Unterstützung im Alltag.",
+      "Was Eltern über die Fußballausbildung ihres Kindes wissen sollten — Werdegang, Ausrüstung, Unterstützung im Alltag.",
     cta: "Infos für Eltern",
   },
   {
     href: "/trainer",
-    emoji: "📋",
+    piktogramm: "trainer",
     title: "Für Trainer",
     description:
-      "Für Trainer:innen mit Interesse am Torwarttraining — Grundlagen und Materialien für die eigene Trainingsarbeit.",
+      "Für Trainer:innen im Jugendfußball — Grundlagen und Materialien für die eigene Trainingsarbeit, zunächst mit Schwerpunkt Torwart.",
     cta: "Trainerbereich",
   },
 ];
@@ -31,19 +39,25 @@ const audiences = [
 export default function HomePage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-16">
-      <div className="max-w-2xl">
-        <span className="badge">Lernplattform</span>
-        {/* Der Markenname steht bewusst in Inter statt in der
-            Display-Schrift: die Markenvorgabe nennt Inter als Schrift der
-            Marke, ein serifiger Namenszug widerspräche der Wortmarke. */}
-        <h1 className="mt-4 font-sans text-4xl font-extrabold tracking-[0.04em] text-ink">
-          {SITE_NAME}
-        </h1>
-        <p className="mt-4 text-lg text-muted">
-          Alles rund ums Torwartspiel an einem Ort — für Torhüter selbst,
-          ihre Eltern und Trainer:innen, die sich fürs Torwarttraining
-          interessieren.
-        </p>
+      <div className="flex items-start justify-between gap-8">
+        <div className="max-w-2xl">
+          <span className="badge">Lernplattform</span>
+          <h1 className="mt-4 text-4xl font-extrabold text-ink sm:text-5xl">
+            {SITE_NAME}
+          </h1>
+          <p className="mt-4 text-lg text-muted">
+            Alles rund ums Fußballspiel an einem Ort — für Spieler:innen
+            selbst, ihre Eltern und Trainer:innen. Wir fangen bei der
+            Torwartposition an, weitere Positionen folgen.
+          </p>
+        </div>
+        {/* Das Zeichen in der Vollfassung als ruhiges Ornament neben dem
+            Namen — groß genug für Strafräume und Anstoßpunkt, erst ab
+            mittlerer Breite, damit es auf dem Handy keinen Platz nimmt. */}
+        <Mark
+          size={144}
+          className="hidden shrink-0 opacity-70 md:block"
+        />
       </div>
 
       <div data-tour-id="tour-home-audiences" className="mt-12 grid gap-5 sm:grid-cols-3">
@@ -53,8 +67,8 @@ export default function HomePage() {
             href={a.href}
             className="card flex flex-col gap-3 transition-colors hover:border-pitch/50"
           >
-            <span className="text-3xl">{a.emoji}</span>
-            <h2 className="text-lg font-semibold text-ink">{a.title}</h2>
+            <Piktogramm name={a.piktogramm} />
+            <h2 className="text-lg text-ink">{a.title}</h2>
             <p className="flex-1 text-sm text-muted">{a.description}</p>
             <span className="text-sm font-medium text-pitch">
               {a.cta} →

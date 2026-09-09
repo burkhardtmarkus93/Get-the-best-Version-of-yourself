@@ -4,11 +4,11 @@ Diese Datei gibt Claude verbindliche Regeln für die Arbeit in diesem Repository
 
 ## 1. Projektüberblick
 
-Campo Academy ist eine Lernplattform für Torhüter, deren Eltern und Trainer:innen mit Interesse am Torwarttraining. Kernidee: Lernmodule (Vokabeln, später Technik/Taktik/Mental) plus Informationsbereiche für die beiden Bezugsgruppen des Kindes — Eltern und Trainer.
+Campo Academy ist eine Lernplattform für Fußballer:innen aller Positionen, deren Eltern und Trainer:innen. **Den Anfang macht die Torwartposition** — sie ist die erste mit Inhalten, nicht die einzige Zielposition. Formulierungen in Navigation, Überschriften und Metadaten sprechen deshalb von Spieler:innen bzw. Fußball; „Torhüter" steht dort, wo es wirklich um die Position geht (Modulseiten, Fachinhalte). Kernidee: Lernmodule je Position (Vokabeln, Technik, Taktik, Athletik, Mental) plus Informationsbereiche für die beiden Bezugsgruppen des Kindes — Eltern und Trainer.
 
-**Zielgruppen:** 1. Torhüter (Kinder/Jugendliche), 2. Eltern, 3. Trainer:innen mit Interesse am Torwarttraining.
+**Zielgruppen:** 1. Spieler:innen (Kinder/Jugendliche), 2. Eltern, 3. Trainer:innen im Jugendfußball.
 
-**Marke (Vorgabe vom 9. September 2026):** Die Plattform heißt **Campo Academy**. „Academy" bleibt in allen Sprachen englisch, wird also auch im deutschen Text nie zu „Akademie". Farben: Dunkel `#121417`, Limettengrün `#9AE34D`, Schwarz `#111111` für Piktogramme, Hell `#F2F4EF` — **kein Türkis**. Schrift der Marke ist Inter; die Wortmarke setzt CAMPO in 800 und ACADEMY in 500 gesperrt darunter. Das Zeichen ist das Spielfeld, ab 48 px abwärts in der Kleinfassung (nur Ecken, Mittellinie, Mittelkreis).
+**Marke (Vorgabe vom 9. September 2026):** Die Plattform heißt **Campo Academy**. „Academy" bleibt in allen Sprachen englisch, wird also auch im deutschen Text nie zu „Akademie". Farben: Dunkel `#121417`, Limettengrün `#9AE34D`, Schwarz `#111111` für Piktogramme, Hell `#F2F4EF` — **kein Türkis**. Schrift der Marke ist Inter — für Wortmarke, Überschriften und Fließtext, keine zweite Schrift daneben; die Wortmarke setzt CAMPO in 800 und ACADEMY in 500 gesperrt darunter. Das Zeichen ist das Spielfeld, ab 48 px abwärts in der Kleinfassung (nur Ecken, Mittellinie, Mittelkreis).
 
 Campo Academy und **Talent Catcher sind getrennte Projekte**. Der einzige zulässige Bezug ist die Form der Ecken im Zeichen — nie Farbe, Name, Daten oder Konten. Konkret: keine Talent-Catcher-Logos oder -Farben einbauen, und die Supabase- bzw. Vercel-Zugänge der beiden Projekte nicht vermischen.
 
@@ -25,7 +25,8 @@ Wenn eine Aufgabe implizit in Richtung Phase 2 geht (z. B. "bau eine Produktempf
 - **Supabase** für Datenbank, Auth und Row-Level-Security (`@supabase/ssr`, `@supabase/supabase-js`) — aktuell nur als Grundgerüst vorhanden (`lib/supabase/`), noch kein Modul nutzt es aktiv
 - **Tailwind CSS** fürs Styling, Design-Tokens in `tailwind.config.ts` (Farben: `ink`/`paper`/`surface`/`pitch`/`amber`/`brick`/`line`/`muted`/`bar`/`pictogram`) — keine Inline-Styles oder neue Farbwerte außerhalb dieser Tokens
 - **Marken-Assets**: Zeichen und Wortmarke als Komponenten unter `components/brand/`, die exportierbaren Dateifassungen (SVG für Social Media, Presse, Favicon) unter `public/marke/`. Den Markennamen nicht als Literal in Seiten schreiben, sondern `SITE_NAME` aus `lib/brand/config.ts` verwenden bzw. bei Seitentiteln die Titel-Vorlage aus `app/layout.tsx` greifen lassen
-- Neue Lernmodule als eigene Route unter `app/torhueter/<modulname>/`, mit zugehöriger Client-Komponente unter `components/<modulname>/`
+- Lernmodule liegen je Position unter `app/<position>/<modulname>/` (aktuell `app/torhueter/…`), mit zugehöriger Client-Komponente unter `components/<modulname>/`. Neue Positionen bekommen eine eigene Route und einen Eintrag auf `/spieler`
+- **Piktogramme statt Emojis**: Symbole in Karten und Listen kommen aus `components/brand/Piktogramm.tsx` (72er-Raster, Strich 5, runde Kappen, schwarz auf grünem Kreis). Neue Symbole dort ergänzen, keine Emojis oder fremden Icon-Sets einbauen
 
 ## 3. Grundprinzip: Zielgruppe enthält Minderjährige
 

@@ -11,11 +11,14 @@
 // später leichter senken als erhöhen.
 //
 // WICHTIG: Es gibt bewusst KEIN Abo, das ein Kind selbst abschließt. Auch
-// das Torhüter-Abo wird von einer volljährigen Person (i. d. R. den
+// das Spieler-Abo wird von einer volljährigen Person (i. d. R. den
 // Erziehungsberechtigten) abgeschlossen und bezahlt — ein Vertrag mit
 // Minderjährigen wäre nach § 107 BGB schwebend unwirksam. Siehe AGB § 2.
 
-export type PlanKey = "torhueter" | "eltern" | "trainer";
+// "spieler" statt "torhueter": die Plattform ist für alle Positionen gedacht,
+// der Torhüter ist nur der Anfang. Der Schlüssel landet später als Stripe
+// lookup_key in der Abrechnung, deshalb jetzt umbenannt, solange nichts live ist.
+export type PlanKey = "spieler" | "eltern" | "trainer";
 export type BillingInterval = "monatlich" | "jaehrlich";
 
 export interface Plan {
@@ -28,10 +31,10 @@ export interface Plan {
 }
 
 export const PLANS: Record<PlanKey, Plan> = {
-  torhueter: {
-    key: "torhueter",
-    name: "Torhüter",
-    tagline: "Alle Lernmodule für den Torhüter selbst",
+  spieler: {
+    key: "spieler",
+    name: "Spieler",
+    tagline: "Alle Lernmodule für Spieler:innen — zunächst Torhüter",
     priceMonthly: 9.99,
     priceYearly: 99,
     features: [
@@ -46,7 +49,7 @@ export const PLANS: Record<PlanKey, Plan> = {
   eltern: {
     key: "eltern",
     name: "Eltern",
-    tagline: "Orientierung für Eltern von Torhüter-Kindern",
+    tagline: "Orientierung für Eltern von Fußball-Kindern",
     priceMonthly: 7.99,
     priceYearly: 79,
     features: [
@@ -60,7 +63,7 @@ export const PLANS: Record<PlanKey, Plan> = {
   trainer: {
     key: "trainer",
     name: "Trainer",
-    tagline: "Für Trainer:innen mit Interesse am Torwarttraining",
+    tagline: "Für Trainer:innen im Jugendfußball, Schwerpunkt Torwart",
     priceMonthly: 17.99,
     priceYearly: 179,
     features: [
@@ -68,7 +71,7 @@ export const PLANS: Record<PlanKey, Plan> = {
       "Themenbereiche des Torwarttrainings",
       "Coaching-Prinzipien",
       "Trainingssteuerung und Periodisierung",
-      "Zugriff auf alle Torhüter-Module",
+      "Zugriff auf alle Spieler-Module",
     ],
   },
 };
@@ -114,7 +117,7 @@ export function stripeLookupKey(
 export function planAndIntervalFromLookupKey(
   lookupKey: string
 ): { plan: PlanKey; billingInterval: BillingInterval } | null {
-  const match = lookupKey.match(/^(torhueter|eltern|trainer)_(monthly|yearly)$/);
+  const match = lookupKey.match(/^(spieler|eltern|trainer)_(monthly|yearly)$/);
   if (!match) return null;
   return {
     plan: match[1] as PlanKey,
